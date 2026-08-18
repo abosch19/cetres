@@ -28,6 +28,7 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--paper);
 }
 
 html,
@@ -129,12 +130,23 @@ blockquote {
   position: sticky;
   top: 0;
   z-index: 50;
-  height: var(--header);
+  height: calc(var(--header) + env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
   display: flex;
   align-items: center;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
-  backdrop-filter: saturate(140%) blur(14px);
+  background: var(--paper);
   border-bottom: 1px solid var(--line);
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 100vh;
+  background: var(--paper);
+  pointer-events: none;
 }
 
 .header-inner {
@@ -264,7 +276,9 @@ blockquote {
 .nav-panel {
   display: none;
   position: absolute;
-  inset: var(--header) 0 auto 0;
+  top: 100%;
+  right: 0;
+  left: 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
   padding: 1.25rem var(--pad) 1.5rem;
@@ -429,7 +443,7 @@ blockquote {
 
 .section {
   padding: clamp(4.2rem, 9vw, 7.5rem) 0;
-  scroll-margin-top: calc(var(--header) + 0.6rem);
+  scroll-margin-top: calc(var(--header) + env(safe-area-inset-top, 0px) + 0.6rem);
 }
 
 .section-head {
@@ -840,9 +854,13 @@ blockquote {
   .stat:nth-child(odd),
   .stat:nth-child(even),
   .stat:nth-last-child(-n + 2) {
-    padding: 1.7rem 1.3rem 1.7rem 0;
+    padding: 1.7rem 1.8rem;
     border: 0;
     border-right: 1px solid var(--line);
+  }
+
+  .stat:first-child {
+    padding-left: 0.15rem;
   }
 
   .stat:last-child {
