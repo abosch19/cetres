@@ -215,54 +215,27 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
         <p class="kicker">{t.contact.kicker}</p>
         <h2 class="display">{t.contact.title}</h2>
       </div>
-      <div class="contact-grid">
-        <div class="vcard">
-          <p>{t.contact.lead}</p>
-          <dl>
-            <div>
-              <dt>{t.contact.phoneLabel}</dt>
-              <dd><a href="tel:+34934286118">93 428 61 18</a></dd>
-            </div>
-            <div>
-              <dt>{t.contact.emailLabel}</dt>
-              <dd><a href="mailto:central@cetresbcn.com">central@cetresbcn.com</a></dd>
-            </div>
-          </dl>
-          <p>
-            <a
-              href="https://maps.google.com/?q=Carrer+Berruguete+98+08035+Barcelona"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {t.contact.map}
-            </a>
-          </p>
-        </div>
-
-        <form class="form" id="contact-form">
-          <div class="field-block">
-            <label for="nom">{t.contact.formName}</label>
-            <input id="nom" name="nom" type="text" required autocomplete="given-name" />
+      <div class="vcard">
+        <p>{t.contact.lead}</p>
+        <dl>
+          <div>
+            <dt>{t.contact.phoneLabel}</dt>
+            <dd><a href="tel:+34934286118">93 428 61 18</a></dd>
           </div>
-          <div class="field-block">
-            <label for="cognoms">{t.contact.formLast}</label>
-            <input id="cognoms" name="cognoms" type="text" required autocomplete="family-name" />
+          <div>
+            <dt>{t.contact.emailLabel}</dt>
+            <dd><a href="mailto:central@cetresbcn.com">central@cetresbcn.com</a></dd>
           </div>
-          <div class="field-block">
-            <label for="email">{t.contact.formEmail}</label>
-            <input id="email" name="email" type="email" required autocomplete="email" />
-          </div>
-          <div class="field-block">
-            <label for="missatge">{t.contact.formMessage}</label>
-            <textarea id="missatge" name="missatge" required></textarea>
-          </div>
-          <button class="btn btn-solid" type="submit">{t.contact.formSubmit}</button>
-          <p class="form-note">
-            {t.contact.formNote}
-            {" "}
-            <a href="mailto:central@cetresbcn.com">central@cetresbcn.com</a>.
-          </p>
-        </form>
+        </dl>
+        <p>
+          <a
+            href="https://maps.google.com/?q=Carrer+Berruguete+98+08035+Barcelona"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t.contact.map}
+          </a>
+        </p>
       </div>
     </div>
   </section>
@@ -274,18 +247,3 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
     <p>© {year} · {t.footer.rights}</p>
   </div>
 </footer>
-
-<script>
-  const form = document.querySelector<HTMLFormElement>("#contact-form");
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const data = new FormData(form);
-    const nom = String(data.get("nom") ?? "").trim();
-    const cognoms = String(data.get("cognoms") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const missatge = String(data.get("missatge") ?? "").trim();
-    const subject = encodeURIComponent(`CETRES — ${nom} ${cognoms}`);
-    const body = encodeURIComponent(`${missatge}\n\n${nom} ${cognoms}\n${email}`);
-    window.location.href = `mailto:central@cetresbcn.com?subject=${subject}&body=${body}`;
-  });
-</script>
