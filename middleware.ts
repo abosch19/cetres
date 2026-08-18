@@ -1,6 +1,7 @@
 import {
   detectLang,
   hrefFor,
+  isCrawler,
   langFromCookie,
   parseAcceptLanguage,
 } from "./src/locale";
@@ -12,6 +13,7 @@ export const config = {
 export default function middleware(request: Request): Response | undefined {
   const url = new URL(request.url);
   if (url.pathname !== "/") return;
+  if (isCrawler(request.headers.get("user-agent") ?? "")) return;
 
   const lang =
     langFromCookie(request.headers.get("cookie") ?? "") ??

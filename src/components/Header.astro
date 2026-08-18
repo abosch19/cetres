@@ -1,6 +1,6 @@
 ---
 import Logo from "./Logo.astro";
-import { hrefFor, prefixFor, type Lang, type Messages } from "../i18n";
+import { hrefFor, type Lang, type Messages } from "../i18n";
 
 interface Props {
   lang: Lang;
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { lang, t } = Astro.props;
-const prefix = prefixFor(lang);
+const home = hrefFor(lang);
 ---
 
 <a class="skip" href="#contingut">{t.ui.skip}</a>
@@ -19,11 +19,11 @@ const prefix = prefixFor(lang);
     </a>
 
     <nav class="nav" aria-label="Principal">
-      <a href={`${prefix}#empresa`}>{t.nav.empresa}</a>
-      <a href={`${prefix}#serveis`}>{t.nav.serveis}</a>
-      <a href={`${prefix}#projectes`}>{t.nav.projectes}</a>
-      <a href={`${prefix}#equip`}>{t.nav.equip}</a>
-      <a href={`${prefix}#contacte`}>{t.nav.contacte}</a>
+      <a href={`${home}#empresa`}>{t.nav.empresa}</a>
+      <a href={`${home}#serveis`}>{t.nav.serveis}</a>
+      <a href={`${home}#projectes`}>{t.nav.projectes}</a>
+      <a href={`${home}#equip`}>{t.nav.equip}</a>
+      <a href={`${home}#contacte`}>{t.nav.contacte}</a>
     </nav>
 
     <div class="header-tools">
@@ -47,11 +47,11 @@ const prefix = prefixFor(lang);
   </div>
 
   <nav class="nav-panel" id="nav-panel" hidden>
-    <a href={`${prefix}#empresa`}>{t.nav.empresa}</a>
-    <a href={`${prefix}#serveis`}>{t.nav.serveis}</a>
-    <a href={`${prefix}#projectes`}>{t.nav.projectes}</a>
-    <a href={`${prefix}#equip`}>{t.nav.equip}</a>
-    <a href={`${prefix}#contacte`}>{t.nav.contacte}</a>
+    <a href={`${home}#empresa`}>{t.nav.empresa}</a>
+    <a href={`${home}#serveis`}>{t.nav.serveis}</a>
+    <a href={`${home}#projectes`}>{t.nav.projectes}</a>
+    <a href={`${home}#equip`}>{t.nav.equip}</a>
+    <a href={`${home}#contacte`}>{t.nav.contacte}</a>
   </nav>
 </header>
 

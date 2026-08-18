@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://www.cetresenginyers.com",
+  site: "https://www.cetres.cat",
+  trailingSlash: "always",
   compressHTML: true,
 });

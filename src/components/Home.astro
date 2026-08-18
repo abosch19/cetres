@@ -1,7 +1,8 @@
 ---
 import Header from "./Header.astro";
 import { clients } from "../data/clients";
-import { prefixFor, type Lang, type Messages } from "../i18n";
+import { hrefFor, type Lang, type Messages } from "../i18n";
+import { business } from "../site";
 
 interface Props {
   lang: Lang;
@@ -9,7 +10,7 @@ interface Props {
 }
 
 const { lang, t } = Astro.props;
-const prefix = prefixFor(lang);
+const home = hrefFor(lang);
 const year = new Date().getFullYear();
 const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)];
 ---
@@ -24,8 +25,8 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
         <h1 class="display">{t.hero.title}</h1>
         <p class="lede">{t.hero.lead}</p>
         <div class="actions">
-          <a class="btn btn-solid" href={`${prefix}#projectes`}>{t.hero.ctaProjects}</a>
-          <a class="btn btn-ghost" href={`${prefix}#contacte`}>{t.hero.ctaContact}</a>
+          <a class="btn btn-solid" href={`${home}#projectes`}>{t.hero.ctaProjects}</a>
+          <a class="btn btn-ghost" href={`${home}#contacte`}>{t.hero.ctaContact}</a>
         </div>
       </div>
     </div>
@@ -35,6 +36,7 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
         alt={t.hero.photoAlt}
         width="1000"
         height="300"
+        fetchpriority="high"
       />
       <figcaption>{t.hero.caption}</figcaption>
     </figure>
@@ -79,6 +81,8 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
             alt={t.about.photoAlt}
             width="1000"
             height="300"
+            loading="lazy"
+            decoding="async"
           />
         </figure>
       </div>
@@ -101,6 +105,8 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
                     alt={copy === 0 ? client.name : ""}
                     width={client.width}
                     height={client.height}
+                    loading="lazy"
+                    decoding="async"
                   />
                 </li>
               ))
@@ -150,7 +156,14 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
           t.projects.items.map((item) => (
             <article class="project">
               <figure class="project-fig">
-                <img src={item.image} alt={item.alt} width="510" height="732" />
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  width="510"
+                  height="732"
+                  loading="lazy"
+                  decoding="async"
+                />
               </figure>
               <div class="project-body">
                 <p class="tag">{item.tag}</p>
@@ -192,6 +205,8 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
             alt={t.team.photoAlt}
             width="1000"
             height="300"
+            loading="lazy"
+            decoding="async"
           />
         </figure>
       </div>
@@ -216,17 +231,21 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
         <h2 class="display">{t.contact.title}</h2>
       </div>
       <div class="vcard">
-        <p>{t.contact.lead}</p>
-        <dl>
-          <div>
-            <dt>{t.contact.phoneLabel}</dt>
-            <dd><a href="tel:+34934286118">93 428 61 18</a></dd>
-          </div>
-          <div>
-            <dt>{t.contact.emailLabel}</dt>
-            <dd><a href="mailto:central@cetresbcn.com">central@cetresbcn.com</a></dd>
-          </div>
-        </dl>
+        <address>
+          <p>{t.contact.lead}</p>
+          <dl>
+            <div>
+              <dt>{t.contact.phoneLabel}</dt>
+              <dd>
+                <a href={`tel:${business.telephone}`}>{business.telephoneDisplay}</a>
+              </dd>
+            </div>
+            <div>
+              <dt>{t.contact.emailLabel}</dt>
+              <dd><a href={`mailto:${business.email}`}>{business.email}</a></dd>
+            </div>
+          </dl>
+        </address>
         <p>
           <a
             href="https://maps.google.com/?q=Carrer+Berruguete+98+08035+Barcelona"
@@ -243,7 +262,14 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
 
 <footer class="footer">
   <div class="wrap footer-inner">
-    <p>{t.footer.legal}</p>
+    <div>
+      <p>{t.footer.legal}</p>
+      <p>
+        {t.contact.lead}
+        {" · "}
+        <a href={`tel:${business.telephone}`}>{business.telephoneDisplay}</a>
+      </p>
+    </div>
     <p>© {year} · {t.footer.rights}</p>
   </div>
 </footer>

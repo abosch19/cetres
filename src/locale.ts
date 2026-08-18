@@ -17,6 +17,12 @@ export function isLang(value: string | null | undefined): value is Lang {
   return value === "ca" || value === "es" || value === "en";
 }
 
+export function isCrawler(userAgent: string): boolean {
+  return /googlebot|google-inspectiontool|storebot-google|bingbot|bingpreview|slurp|duckduckbot|baiduspider|yandex(bot|images)|facebookexternalhit|twitterbot|linkedinbot|applebot|gptbot|oai-searchbot|claudebot|anthropic|perplexity|bytespider|ccbot|semrushbot|ahrefsbot|dotbot|mj12bot|ia_archiver|chrome-lighthouse|petalbot|seekport/i.test(
+    userAgent,
+  );
+}
+
 export function prefixFor(lang: Lang): string {
   return localeMeta[lang].path;
 }

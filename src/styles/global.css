@@ -689,6 +689,13 @@ blockquote {
   gap: 1.1rem;
 }
 
+.vcard address {
+  display: grid;
+  gap: 1.1rem;
+  margin: 0;
+  font-style: normal;
+}
+
 .vcard dl {
   display: grid;
   gap: 1.1rem;
@@ -798,6 +805,10 @@ blockquote {
 .footer-inner {
   display: grid;
   gap: 0.4rem;
+}
+
+.footer a {
+  color: inherit;
 }
 
 /* Desktop */
