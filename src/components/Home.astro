@@ -84,6 +84,28 @@ const year = new Date().getFullYear();
     </div>
   </section>
 
+  <section class="clients-band" aria-labelledby="clients-title">
+    <div class="wrap">
+      <div class="clients">
+        <h3 id="clients-title">{t.contact.clients}</h3>
+        <ul class="client-logos">
+          {
+            clients.map((client, i) => (
+              <li class={`logo-${i + 1}`}>
+                <img
+                  src={client.src}
+                  alt={client.name}
+                  width={client.width}
+                  height={client.height}
+                />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="serveis">
     <div class="wrap">
       <div class="section-head">
@@ -236,24 +258,6 @@ const year = new Date().getFullYear();
             <a href="mailto:central@cetresbcn.com">central@cetresbcn.com</a>.
           </p>
         </form>
-      </div>
-
-      <div class="clients">
-        <h3>{t.contact.clients}</h3>
-        <ul class="client-logos">
-          {
-            clients.map((client) => (
-              <li>
-                <img
-                  src={client.src}
-                  alt={client.name}
-                  width={client.width}
-                  height={client.height}
-                />
-              </li>
-            ))
-          }
-        </ul>
       </div>
     </div>
   </section>
