@@ -77,4 +77,10 @@ export const clients = [
     width: 2200,
     height: 769,
   },
+  {
+    name: "Applus+",
+    src: "/images/clients/applus.svg",
+    width: 1693,
+    height: 523,
+  },
 ] as const;

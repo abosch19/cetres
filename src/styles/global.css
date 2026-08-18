@@ -730,89 +730,77 @@ blockquote {
 }
 
 .clients-band {
-  padding: 0 0 clamp(3.2rem, 7vw, 5.5rem);
-}
-
-.clients {
-  padding-top: 1.8rem;
+  padding: 1.8rem 0 clamp(3.2rem, 7vw, 5.5rem);
   border-top: 1px solid var(--line);
-  text-align: center;
 }
 
-.clients h3 {
+.clients-title {
   font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 500;
   color: var(--ink-soft);
-  margin-bottom: 1.6rem;
+  text-align: center;
+  margin: 0 0 1.6rem;
 }
 
-.client-logos {
+.client-marquee {
+  display: grid;
+  gap: 1.35rem;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 5%,
+    #000 95%,
+    transparent
+  );
+}
+
+.client-track {
   display: flex;
-  flex-wrap: wrap;
+  width: max-content;
   align-items: center;
-  justify-content: center;
+  gap: 3.2rem;
   list-style: none;
-  margin: 0 auto;
-  padding: 0.2rem 0 1.2rem;
-  column-gap: 0;
-  row-gap: 1.5rem;
+  margin: 0;
+  padding: 0.15rem 0;
+  animation: client-marquee 36s linear infinite;
 }
 
-.client-logos li {
+.client-track-2 {
+  animation-direction: reverse;
+  animation-duration: 42s;
+}
+
+.client-track-3 {
+  animation-duration: 39s;
+}
+
+.client-marquee:hover .client-track,
+.client-marquee:focus-within .client-track {
+  animation-play-state: paused;
+}
+
+.client-track li {
   display: flex;
   align-items: center;
-  flex: 0 1 auto;
+  flex: 0 0 auto;
 }
 
-.client-logos img {
+.client-track img {
   display: block;
   width: auto;
-  max-width: min(12rem, 46vw);
-  height: 2.15rem;
+  height: 2.4rem;
+  max-width: 11rem;
   object-fit: contain;
   object-position: center;
 }
 
-.client-logos .logo-1 { margin: 0 1.5rem; }
-.client-logos .logo-1 img { height: 2.6rem; }
-
-.client-logos .logo-2 { margin: 0 0.7rem 0 1.1rem; }
-.client-logos .logo-2 img { height: 1.75rem; }
-
-.client-logos .logo-3 { margin: 0 1.8rem 0 1.3rem; }
-.client-logos .logo-3 img { height: 3.05rem; }
-
-.client-logos .logo-4 { margin: 0 0.5rem 0 0.9rem; }
-.client-logos .logo-4 img { height: 2rem; }
-
-.client-logos .logo-5 { margin: 0 1.6rem 0 1.4rem; }
-.client-logos .logo-5 img { height: 2.9rem; }
-
-.client-logos .logo-6 { margin: 0 1.2rem 0 0.6rem; }
-.client-logos .logo-6 img { height: 1.85rem; }
-
-.client-logos .logo-7 { margin: 0 0.8rem 0 1.7rem; }
-.client-logos .logo-7 img { height: 3.2rem; }
-
-.client-logos .logo-8 { margin: 0 1.4rem 0 0.5rem; }
-.client-logos .logo-8 img { height: 2.15rem; }
-
-.client-logos .logo-9 { margin: 0 0.6rem 0 1.2rem; }
-.client-logos .logo-9 img { height: 2.75rem; }
-
-.client-logos .logo-10 { margin: 0 1.5rem 0 0.8rem; }
-.client-logos .logo-10 img { height: 1.9rem; }
-
-.client-logos .logo-11 { margin: 0 1.1rem 0 0.4rem; }
-.client-logos .logo-11 img { height: 2.85rem; }
-
-.client-logos .logo-12 { margin: 0 0.7rem 0 1.6rem; }
-.client-logos .logo-12 img { height: 2.05rem; }
-
-.client-logos .logo-13 { margin: 0 1.3rem 0 0.5rem; }
-.client-logos .logo-13 img { height: 2.5rem; }
+@keyframes client-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 
 /* Footer */
 
@@ -928,52 +916,18 @@ blockquote {
     gap: 1.5rem;
   }
 
-  .client-logos {
-    row-gap: 1.8rem;
+  .client-marquee {
+    gap: 1.7rem;
   }
 
-  .client-logos img {
-    max-width: 14rem;
+  .client-track {
+    gap: 3.8rem;
   }
 
-  .client-logos .logo-1 { margin: 0 2rem; }
-  .client-logos .logo-1 img { height: 2.85rem; }
-
-  .client-logos .logo-2 { margin: 0 1rem 0 1.6rem; }
-  .client-logos .logo-2 img { height: 1.9rem; }
-
-  .client-logos .logo-3 { margin: 0 2.4rem 0 1.8rem; }
-  .client-logos .logo-3 img { height: 3.35rem; }
-
-  .client-logos .logo-4 { margin: 0 0.8rem 0 1.2rem; }
-  .client-logos .logo-4 img { height: 2.15rem; }
-
-  .client-logos .logo-5 { margin: 0 2.1rem 0 1.9rem; }
-  .client-logos .logo-5 img { height: 3.15rem; }
-
-  .client-logos .logo-6 { margin: 0 1.6rem 0 0.9rem; }
-  .client-logos .logo-6 img { height: 2rem; }
-
-  .client-logos .logo-7 { margin: 0 1.1rem 0 2.2rem; }
-  .client-logos .logo-7 img { height: 3.45rem; }
-
-  .client-logos .logo-8 { margin: 0 1.9rem 0 0.7rem; }
-  .client-logos .logo-8 img { height: 2.3rem; }
-
-  .client-logos .logo-9 { margin: 0 0.9rem 0 1.6rem; }
-  .client-logos .logo-9 img { height: 3rem; }
-
-  .client-logos .logo-10 { margin: 0 2rem 0 1.1rem; }
-  .client-logos .logo-10 img { height: 2.05rem; }
-
-  .client-logos .logo-11 { margin: 0 1.5rem 0 0.6rem; }
-  .client-logos .logo-11 img { height: 3.1rem; }
-
-  .client-logos .logo-12 { margin: 0 1rem 0 2.1rem; }
-  .client-logos .logo-12 img { height: 2.2rem; }
-
-  .client-logos .logo-13 { margin: 0 1.7rem 0 0.8rem; }
-  .client-logos .logo-13 img { height: 2.7rem; }
+  .client-track img {
+    height: 2.65rem;
+    max-width: 13rem;
+  }
 }
 
 @media (min-width: 1100px) {
@@ -996,5 +950,10 @@ blockquote {
   *::after {
     transition: none !important;
     animation: none !important;
+  }
+
+  .client-marquee {
+    overflow-x: auto;
+    mask-image: none;
   }
 }
