@@ -1,6 +1,6 @@
 ---
 import Logo from "./Logo.astro";
-import { prefixFor, type Lang, type Messages } from "../i18n";
+import { hrefFor, prefixFor, type Lang, type Messages } from "../i18n";
 
 interface Props {
   lang: Lang;
@@ -28,11 +28,11 @@ const prefix = prefixFor(lang);
 
     <div class="header-tools">
       <div class="lang" aria-label={t.ui.lang}>
-        <a href="/" aria-current={lang === "ca" ? "page" : undefined}>CA</a>
+        <a href={hrefFor("ca")} data-lang="ca" aria-current={lang === "ca" ? "page" : undefined}>CA</a>
         <span aria-hidden="true">/</span>
-        <a href="/es/" aria-current={lang === "es" ? "page" : undefined}>ES</a>
+        <a href={hrefFor("es")} data-lang="es" aria-current={lang === "es" ? "page" : undefined}>ES</a>
         <span aria-hidden="true">/</span>
-        <a href="/en/" aria-current={lang === "en" ? "page" : undefined}>EN</a>
+        <a href={hrefFor("en")} data-lang="en" aria-current={lang === "en" ? "page" : undefined}>EN</a>
       </div>
       <button
         class="menu-btn"
@@ -71,4 +71,17 @@ const prefix = prefixFor(lang);
     });
     panel.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
   }
+
+  document.querySelectorAll<HTMLAnchorElement>(".lang a[data-lang]").forEach((link) => {
+    link.addEventListener("click", () => {
+      const next = link.dataset.lang;
+      if (next !== "ca" && next !== "es" && next !== "en") return;
+      try {
+        localStorage.setItem("lang", next);
+      } catch {
+        // private mode
+      }
+      document.cookie = `lang=${next}; Path=/; Max-Age=31536000; SameSite=Lax`;
+    });
+  });
 </script>

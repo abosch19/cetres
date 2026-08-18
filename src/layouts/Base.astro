@@ -27,7 +27,52 @@ const canonical = path ? `${path}/` : "/";
     <link rel="alternate" hreflang="ca" href="/" />
     <link rel="alternate" hreflang="es" href="/es/" />
     <link rel="alternate" hreflang="en" href="/en/" />
-    <link rel="alternate" hreflang="x-default" href="/" />
+    <link rel="alternate" hreflang="x-default" href="/en/" />
+    <script is:inline>
+      (function () {
+        if (location.pathname !== "/") return;
+
+        function isLang(value) {
+          return value === "ca" || value === "es" || value === "en";
+        }
+
+        var stored = null;
+        try {
+          stored = localStorage.getItem("lang");
+        } catch (e) {}
+        if (!isLang(stored)) {
+          var match = document.cookie.match(/(?:^|; )lang=(ca|es|en)\b/);
+          stored = match ? match[1] : null;
+        }
+
+        var lang = isLang(stored) ? stored : null;
+        if (!lang) {
+          var list =
+            navigator.languages && navigator.languages.length
+              ? navigator.languages
+              : [navigator.language || ""];
+          for (var i = 0; i < list.length; i++) {
+            var code = String(list[i]).toLowerCase().split("-")[0];
+            if (isLang(code)) {
+              lang = code;
+              break;
+            }
+          }
+        }
+        if (!lang) lang = "en";
+        if (lang === "ca") return;
+
+        document.documentElement.setAttribute("data-pending-lang", "");
+        var dest = lang === "es" ? "/es/" : "/en/";
+        if (location.hash) dest += location.hash;
+        location.replace(dest);
+      })();
+    </script>
+    <style is:inline>
+      html[data-pending-lang] {
+        visibility: hidden;
+      }
+    </style>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

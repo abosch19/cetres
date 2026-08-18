@@ -1,17 +1,7 @@
-export type Lang = "ca" | "es" | "en";
+import type { Lang } from "./locale";
 
-export const localeMeta: Record<
-  Lang,
-  { path: string; hreflang: string; og: string }
-> = {
-  ca: { path: "", hreflang: "ca", og: "ca_ES" },
-  es: { path: "/es", hreflang: "es", og: "es_ES" },
-  en: { path: "/en", hreflang: "en", og: "en_GB" },
-};
-
-export function prefixFor(lang: Lang): string {
-  return localeMeta[lang].path;
-}
+export type { Lang };
+export { hrefFor, localeMeta, prefixFor } from "./locale";
 
 export const messages = {
   ca: {
