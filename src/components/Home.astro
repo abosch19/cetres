@@ -1,0 +1,311 @@
+---
+import Header from "./Header.astro";
+import type { Lang, Messages } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  t: Messages;
+}
+
+const { lang, t } = Astro.props;
+const prefix = lang === "es" ? "/es" : "";
+const year = new Date().getFullYear();
+---
+
+<Header lang={lang} t={t} />
+
+<main id="contingut">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">{t.hero.eyebrow}</p>
+        <h1 class="display">{t.hero.title}</h1>
+        <p class="lede">{t.hero.lead}</p>
+        <div class="actions">
+          <a class="btn btn-solid" href={`${prefix}#projectes`}>{t.hero.ctaProjects}</a>
+          <a class="btn btn-ghost" href={`${prefix}#contacte`}>{t.hero.ctaContact}</a>
+        </div>
+      </div>
+    </div>
+    <figure class="hero-film">
+      <img
+        src="/images/photos/8.jpg"
+        alt={lang === "es"
+          ? "Bocas de túnel y vial de conexión en una obra lineal en Cataluña"
+          : "Boques de túnel i vial de connexió en una obra lineal a Catalunya"}
+        width="1000"
+        height="300"
+      />
+      <figcaption>{t.hero.caption}</figcaption>
+    </figure>
+  </section>
+
+  <section class="stats" aria-label={lang === "es" ? "Datos" : "Dades"}>
+    <div class="wrap stats-grid">
+      <div class="stat">
+        <b>1988</b>
+        <span>{t.stats.year}</span>
+      </div>
+      <div class="stat">
+        <b>+35</b>
+        <span>{t.stats.years}</span>
+      </div>
+      <div class="stat">
+        <b>7</b>
+        <span>{t.stats.fields}</span>
+      </div>
+      <div class="stat">
+        <b>3</b>
+        <span>{t.stats.iso}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="empresa">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">{t.about.kicker}</p>
+        <h2 class="display">{t.about.title}</h2>
+      </div>
+      <div class="split-stack">
+        <div class="prose">
+          <p>{t.about.p1}</p>
+          <p>{t.about.p2}</p>
+          <p>{t.about.p3}</p>
+        </div>
+        <figure class="film">
+          <img
+            src="/images/photos/7.jpg"
+            alt={lang === "es"
+              ? "Intradós de un puente de hormigón sobre un cauce"
+              : "Intradós d’un pont de formigó sobre un llit fluvial"}
+            width="1000"
+            height="300"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="serveis">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">{t.services.kicker}</p>
+        <h2 class="display">{t.services.title}</h2>
+        <p class="lede">{t.services.intro}</p>
+      </div>
+      <div class="service-list">
+        {
+          t.services.items.map((item) => (
+            <article class="service">
+              <span class="n">{item.n}</span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+      <div class="fields">
+        <h3>{t.services.fieldsTitle}</h3>
+        <div class="field-row">
+          {t.services.fields.map((field) => <span class="field">{field}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projectes">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">{t.projects.kicker}</p>
+        <h2 class="display">{t.projects.title}</h2>
+        <p class="lede">{t.projects.intro}</p>
+      </div>
+      <div class="project-grid">
+        {
+          t.projects.items.map((item) => (
+            <article class="project">
+              <figure class="project-fig">
+                <img src={item.image} alt={item.alt} width="510" height="732" />
+              </figure>
+              <div class="project-body">
+                <p class="tag">{item.tag}</p>
+                <h3>{item.title}</h3>
+                <p>{item.meta}</p>
+                <p class="note">{item.note}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+      <div class="more-list">
+        {
+          t.projects.more.map((item) => (
+            <article class="more-item">
+              <h3>{item.title}</h3>
+              <p>{item.meta}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="eines">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">{t.tools.kicker}</p>
+        <h2 class="display">{t.tools.title}</h2>
+        <p class="lede">{t.tools.intro}</p>
+      </div>
+      <div class="tool-list">
+        {
+          t.tools.items.map((item) => (
+            <article class="tool">
+              <h3>{item.name}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="equip">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">{t.team.kicker}</p>
+        <h2 class="display">{t.team.title}</h2>
+      </div>
+      <div class="split-stack">
+        <div class="prose">
+          <p>{t.team.p1}</p>
+          <p>{t.team.p2}</p>
+        </div>
+        <figure class="film">
+          <img
+            src="/images/photos/9.jpg"
+            alt={lang === "es"
+              ? "Montaje de un tablero mixto de acero y hormigón"
+              : "Muntatge d’un tauler mixt d’acer i formigó"}
+            width="1000"
+            height="300"
+          />
+        </figure>
+      </div>
+      <div class="partners">
+        {
+          t.team.partners.map((partner) => (
+            <article class="partner">
+              <p class="label">{t.team.partnersLabel}</p>
+              <h3>{partner.name}</h3>
+              <p>{partner.role}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gestio">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">{t.quality.kicker}</p>
+        <h2 class="display">{t.quality.title}</h2>
+      </div>
+      <p class="lede">{t.quality.text}</p>
+      <div class="badges">
+        {t.quality.badges.map((badge) => <span class="badge">{badge}</span>)}
+      </div>
+      <p class="moves">{t.quality.moves}</p>
+    </div>
+  </section>
+
+  <section class="section" id="contacte">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">{t.contact.kicker}</p>
+        <h2 class="display">{t.contact.title}</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="vcard">
+          <p>{t.contact.lead}</p>
+          <dl>
+            <div>
+              <dt>{t.contact.phoneLabel}</dt>
+              <dd><a href="tel:+34934286118">93 428 61 18</a></dd>
+            </div>
+            <div>
+              <dt>{t.contact.emailLabel}</dt>
+              <dd><a href="mailto:central@cetresbcn.com">central@cetresbcn.com</a></dd>
+            </div>
+          </dl>
+          <p>
+            <a
+              href="https://maps.google.com/?q=Carrer+Berruguete+98+08035+Barcelona"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t.contact.map}
+            </a>
+          </p>
+        </div>
+
+        <form class="form" id="contact-form">
+          <div class="field-block">
+            <label for="nom">{t.contact.formName}</label>
+            <input id="nom" name="nom" type="text" required autocomplete="given-name" />
+          </div>
+          <div class="field-block">
+            <label for="cognoms">{t.contact.formLast}</label>
+            <input id="cognoms" name="cognoms" type="text" required autocomplete="family-name" />
+          </div>
+          <div class="field-block">
+            <label for="email">{t.contact.formEmail}</label>
+            <input id="email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="field-block">
+            <label for="missatge">{t.contact.formMessage}</label>
+            <textarea id="missatge" name="missatge" required></textarea>
+          </div>
+          <button class="btn btn-solid" type="submit">{t.contact.formSubmit}</button>
+          <p class="form-note">
+            {t.contact.formNote}
+            {" "}
+            <a href="mailto:central@cetresbcn.com">central@cetresbcn.com</a>.
+          </p>
+        </form>
+      </div>
+
+      <div class="clients">
+        <h3>{t.contact.clients}</h3>
+        <div class="client-row">
+          {t.contact.clientList.map((name) => <span>{name}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p>{t.footer.legal}</p>
+    <p>{t.footer.cookies}</p>
+    <p>© {year} · {t.footer.rights}</p>
+  </div>
+</footer>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#contact-form");
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const nom = String(data.get("nom") ?? "").trim();
+    const cognoms = String(data.get("cognoms") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const missatge = String(data.get("missatge") ?? "").trim();
+    const subject = encodeURIComponent(`CETRES — ${nom} ${cognoms}`);
+    const body = encodeURIComponent(`${missatge}\n\n${nom} ${cognoms}\n${email}`);
+    window.location.href = `mailto:central@cetresbcn.com?subject=${subject}&body=${body}`;
+  });
+</script>
