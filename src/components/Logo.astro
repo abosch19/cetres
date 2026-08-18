@@ -5,4 +5,7 @@ interface Props {
 const { title = "CETRES Enginyers" } = Astro.props;
 ---
 
-<img src="/brand/logo.png" alt={title} width="200" height="84" />
+<picture>
+  <source srcset="/brand/logo.webp" type="image/webp" />
+  <img src="/brand/logo.png" alt={title} width="200" height="84" />
+</picture>

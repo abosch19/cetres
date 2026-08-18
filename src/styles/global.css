@@ -1,7 +1,31 @@
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("/fonts/instrument-sans.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-mono-400.woff2") format("woff2");
+}
+
 :root {
   --ink: #161412;
   --ink-soft: #4a453e;
-  --ink-faint: #8a8378;
+  --ink-faint: #5f5a53;
   --paper: #f2eee6;
   --paper-2: #e7e1d5;
   --paper-3: #d9d1c3;

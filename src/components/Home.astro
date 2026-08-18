@@ -31,13 +31,20 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
       </div>
     </div>
     <figure class="hero-film">
-      <img
-        src="/images/photos/8.jpg"
-        alt={t.hero.photoAlt}
-        width="1000"
-        height="300"
-        fetchpriority="high"
-      />
+      <picture>
+        <source
+          type="image/webp"
+          srcset="/images/photos/8-800.webp 800w, /images/photos/8.webp 1000w"
+          sizes="100vw"
+        />
+        <img
+          src="/images/photos/8.jpg"
+          alt={t.hero.photoAlt}
+          width="1000"
+          height="300"
+          fetchpriority="high"
+        />
+      </picture>
       <figcaption>{t.hero.caption}</figcaption>
     </figure>
   </section>
@@ -76,14 +83,21 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
           <p>{t.about.p3}</p>
         </div>
         <figure class="film">
-          <img
-            src="/images/photos/7.jpg"
-            alt={t.about.photoAlt}
-            width="1000"
-            height="300"
-            loading="lazy"
-            decoding="async"
-          />
+          <picture>
+            <source
+              type="image/webp"
+              srcset="/images/photos/7-800.webp 800w, /images/photos/7.webp 1000w"
+              sizes="(min-width: 800px) 720px, 100vw"
+            />
+            <img
+              src="/images/photos/7.jpg"
+              alt={t.about.photoAlt}
+              width="1000"
+              height="300"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
         </figure>
       </div>
     </div>
@@ -200,14 +214,21 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
           <p>{t.team.p2}</p>
         </div>
         <figure class="film">
-          <img
-            src="/images/photos/9.jpg"
-            alt={t.team.photoAlt}
-            width="1000"
-            height="300"
-            loading="lazy"
-            decoding="async"
-          />
+          <picture>
+            <source
+              type="image/webp"
+              srcset="/images/photos/9-800.webp 800w, /images/photos/9.webp 1000w"
+              sizes="(min-width: 800px) 720px, 100vw"
+            />
+            <img
+              src="/images/photos/9.jpg"
+              alt={t.team.photoAlt}
+              width="1000"
+              height="300"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
         </figure>
       </div>
       <div class="partners">
