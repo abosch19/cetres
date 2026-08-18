@@ -1,5 +1,6 @@
 ---
 import Header from "./Header.astro";
+import { clients } from "../data/clients";
 import type { Lang, Messages } from "../i18n";
 
 interface Props {
@@ -279,9 +280,20 @@ const year = new Date().getFullYear();
 
       <div class="clients">
         <h3>{t.contact.clients}</h3>
-        <div class="client-row">
-          {t.contact.clientList.map((name) => <span>{name}</span>)}
-        </div>
+        <ul class="client-logos">
+          {
+            clients.map((client) => (
+              <li>
+                <img
+                  src={client.src}
+                  alt={client.name}
+                  width={client.width}
+                  height={client.height}
+                />
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
   </section>

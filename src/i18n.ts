@@ -222,13 +222,6 @@ export const messages = {
       formSubmit: "Enviar missatge",
       formNote: "El formulari obre el vostre client de correu. També ens podeu escriure directament a",
       clients: "Administracions i concessionàries amb qui hem treballat",
-      clientList: [
-        "Generalitat de Catalunya",
-        "Diputació de Barcelona",
-        "INCASÒL",
-        "GISA / Infraestructures.cat",
-        "ACESA / Abertis / Invicat",
-      ],
     },
     footer: {
       legal: "CETRES Enginyers, SLP",
@@ -457,13 +450,6 @@ export const messages = {
       formSubmit: "Enviar mensaje",
       formNote: "El formulario abre su cliente de correo. También pueden escribirnos directamente a",
       clients: "Administraciones y concesionarias con las que hemos trabajado",
-      clientList: [
-        "Generalitat de Catalunya",
-        "Diputació de Barcelona",
-        "INCASÒL",
-        "GISA / Infraestructures.cat",
-        "ACESA / Abertis / Invicat",
-      ],
     },
     footer: {
       legal: "CETRES Enginyers, SLP",

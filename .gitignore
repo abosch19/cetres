@@ -8,3 +8,4 @@ dist/
 !.env.example
 MEMORY.md
 .vercel/
+.vercel
