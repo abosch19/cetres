@@ -619,32 +619,7 @@ blockquote {
   font-size: 0.92rem;
 }
 
-/* Tools */
-
-.tool-list {
-  display: grid;
-  gap: 0;
-  border-top: 1px solid var(--line);
-}
-
-.tool {
-  display: grid;
-  gap: 0.4rem;
-  padding: 1.2rem 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.tool h3 {
-  font-family: var(--mono);
-  font-size: 0.92rem;
-  letter-spacing: 0.08em;
-}
-
-.tool p {
-  color: var(--ink-soft);
-}
-
-/* Team / quality */
+/* Team */
 
 .partners {
   display: grid;
@@ -678,28 +653,6 @@ blockquote {
 
 .partner p {
   color: var(--ink-soft);
-}
-
-.badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-  margin: 1.4rem 0 1.2rem;
-}
-
-.badge {
-  min-width: 7.2rem;
-  text-align: center;
-  border: 1px solid var(--ink);
-  padding: 0.7rem 0.85rem;
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-}
-
-.moves {
-  color: var(--ink-soft);
-  max-width: 38rem;
 }
 
 /* Contact */
@@ -911,22 +864,6 @@ blockquote {
     font-size: 2.15rem;
   }
 
-  .tool-list {
-    grid-template-columns: repeat(5, 1fr);
-    border: 0;
-  }
-
-  .tool {
-    padding: 0 1.1rem 0 0;
-    border: 0;
-    border-right: 1px solid var(--line);
-  }
-
-  .tool:last-child {
-    border-right: 0;
-    padding-right: 0;
-  }
-
   .partners {
     grid-template-columns: 1fr 1fr;
     gap: 0;
@@ -942,7 +879,7 @@ blockquote {
   }
 
   .footer-inner {
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto;
     align-items: center;
     gap: 1.5rem;
   }

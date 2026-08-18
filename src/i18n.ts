@@ -1,4 +1,17 @@
-export type Lang = "ca" | "es";
+export type Lang = "ca" | "es" | "en";
+
+export const localeMeta: Record<
+  Lang,
+  { path: string; hreflang: string; og: string }
+> = {
+  ca: { path: "", hreflang: "ca", og: "ca_ES" },
+  es: { path: "/es", hreflang: "es", og: "es_ES" },
+  en: { path: "/en", hreflang: "en", og: "en_GB" },
+};
+
+export function prefixFor(lang: Lang): string {
+  return localeMeta[lang].path;
+}
 
 export const messages = {
   ca: {
@@ -14,6 +27,12 @@ export const messages = {
       equip: "Equip",
       contacte: "Contacte",
     },
+    ui: {
+      skip: "Salta al contingut",
+      lang: "Idioma",
+      menu: "Obre el menú",
+      stats: "Dades",
+    },
     hero: {
       eyebrow: "Consultoria d’enginyeria civil · Barcelona · 1988",
       title: "Estudis, projectes i direcció d’obra.",
@@ -21,6 +40,7 @@ export const messages = {
       ctaProjects: "Veure projectes",
       ctaContact: "Contactar",
       caption: "Obra lineal i estructures. Catalunya.",
+      photoAlt: "Boques de túnel i vial de connexió en una obra lineal a Catalunya",
     },
     stats: {
       year: "Fundació",
@@ -34,6 +54,7 @@ export const messages = {
       p1: "CETRES Enginyers, SLP es va constituir el juny de 1988 a Barcelona. Des d’aleshores ens dediquem a l’enginyeria civil: redacció d’estudis i projectes, assistències tècniques i direccions d’obra, en obra civil i urbanització.",
       p2: "Hem intervingut en infraestructures de primer ordre —autopistes, carreteres, ponts, ferrocarril i obres subterrànies— i mantenim relacions estables amb administracions, concessionàries i contractistes.",
       p3: "El valor que aportem és tècnic i concret: una solució adequada, un termini creïble i un control de cost i qualitat que es pot seguir.",
+      photoAlt: "Intradós d’un pont de formigó sobre un llit fluvial",
     },
     services: {
       kicker: "02 — Serveis",
@@ -155,36 +176,8 @@ export const messages = {
         },
       ],
     },
-    tools: {
-      kicker: "04 — Eines",
-      title: "Programari desenvolupat a l’oficina.",
-      intro:
-        "Amb els anys hem escrit eines pròpies per accelerar el projecte, el seguiment d’obra i l’explotació. No són un catàleg comercial: són el mètode de treball.",
-      items: [
-        {
-          name: "WH",
-          text: "Traçat de carreteres i ferrocarrils sobre CAD.",
-        },
-        {
-          name: "ROADGIS",
-          text: "Gestió integral de manteniment i explotació de carreteres amb GIS.",
-        },
-        {
-          name: "GISSENY",
-          text: "Inventari i explotació de la senyalització vertical d’orientació.",
-        },
-        {
-          name: "VIDEOTRACK",
-          text: "Filmació georeferenciada per comparar l’estat d’obres lineals.",
-        },
-        {
-          name: "ABDABB",
-          text: "Seguiment de projectes i obres de senyalització per flux de treball.",
-        },
-      ],
-    },
     team: {
-      kicker: "05 — Equip",
+      kicker: "04 — Equip",
       title: "Criteri tècnic, tracte directe.",
       p1: "L’oficina la formen professionals amb experiència reconeguda en cada disciplina. El compromís i el rigor en el tracte —intern i amb el client— són part del mètode, no un afegit.",
       p2: "Els socis i representants són Xavier Bosch i Solé i Carles Giner i Garriga, enginyers de Camins, Canals i Ports, especialitat d’estructures, amb més de trenta anys de pràctica.",
@@ -199,17 +192,10 @@ export const messages = {
           role: "Enginyer de Camins, Canals i Ports · Estructures",
         },
       ],
-    },
-    quality: {
-      kicker: "06 — Gestió",
-      title: "Qualitat, medi ambient i prevenció.",
-      text: "El sistema integrat de gestió compleix UNE-EN-ISO 9001:2015, UNE-EN-ISO 14001:2015 i ISO 45001:2018. La política la signen els socis-directors i es revisa periòdicament.",
-      badges: ["ISO 9001", "ISO 14001", "ISO 45001"],
-      moves:
-        "Estem adherits al programa MOVES III (ICAEN / Next Generation EU), destinat a una mobilitat més neta: vehicles elèctrics i punts de recàrrega.",
+      photoAlt: "Muntatge d’un tauler mixt d’acer i formigó",
     },
     contact: {
-      kicker: "07 — Contacte",
+      kicker: "05 — Contacte",
       title: "Escriviu-nos o visiteu l’oficina.",
       lead: "Carrer Berruguete, 98 · 08035 Barcelona",
       phoneLabel: "Telèfon",
@@ -225,7 +211,6 @@ export const messages = {
     },
     footer: {
       legal: "CETRES Enginyers, SLP",
-      cookies: "Aquesta pàgina no emmagatzema galetes.",
       rights: "Tots els drets reservats.",
     },
   },
@@ -242,6 +227,12 @@ export const messages = {
       equip: "Equipo",
       contacte: "Contacto",
     },
+    ui: {
+      skip: "Saltar al contenido",
+      lang: "Idioma",
+      menu: "Abrir menú",
+      stats: "Datos",
+    },
     hero: {
       eyebrow: "Consultoría de ingeniería civil · Barcelona · 1988",
       title: "Estudios, proyectos y dirección de obra.",
@@ -249,6 +240,7 @@ export const messages = {
       ctaProjects: "Ver proyectos",
       ctaContact: "Contactar",
       caption: "Obra lineal y estructuras. Cataluña.",
+      photoAlt: "Bocas de túnel y vial de conexión en una obra lineal en Cataluña",
     },
     stats: {
       year: "Fundación",
@@ -262,6 +254,7 @@ export const messages = {
       p1: "CETRES Enginyers, SLP se constituyó en junio de 1988 en Barcelona. Desde entonces nos dedicamos a la ingeniería civil: redacción de estudios y proyectos, asistencias técnicas y direcciones de obra, en obra civil y urbanización.",
       p2: "Hemos intervenido en infraestructuras de primer orden —autopistas, carreteras, puentes, ferrocarril y obras subterráneas— y mantenemos relaciones estables con administraciones, concesionarias y contratistas.",
       p3: "El valor que aportamos es técnico y concreto: una solución adecuada, un plazo creíble y un control de coste y calidad que se puede seguir.",
+      photoAlt: "Intradós de un puente de hormigón sobre un cauce",
     },
     services: {
       kicker: "02 — Servicios",
@@ -383,36 +376,8 @@ export const messages = {
         },
       ],
     },
-    tools: {
-      kicker: "04 — Herramientas",
-      title: "Software desarrollado en la oficina.",
-      intro:
-        "Con los años hemos escrito herramientas propias para acelerar el proyecto, el seguimiento de obra y la explotación. No son un catálogo comercial: son el método de trabajo.",
-      items: [
-        {
-          name: "WH",
-          text: "Trazado de carreteras y ferrocarriles sobre CAD.",
-        },
-        {
-          name: "ROADGIS",
-          text: "Gestión integral de mantenimiento y explotación de carreteras con GIS.",
-        },
-        {
-          name: "GISSENY",
-          text: "Inventario y explotación de la señalización vertical de orientación.",
-        },
-        {
-          name: "VIDEOTRACK",
-          text: "Filmación georreferenciada para comparar el estado de obras lineales.",
-        },
-        {
-          name: "ABDABB",
-          text: "Seguimiento de proyectos y obras de señalización por flujo de trabajo.",
-        },
-      ],
-    },
     team: {
-      kicker: "05 — Equipo",
+      kicker: "04 — Equipo",
       title: "Criterio técnico, trato directo.",
       p1: "La oficina la forman profesionales con experiencia reconocida en cada disciplina. El compromiso y el rigor en el trato —interno y con el cliente— son parte del método, no un añadido.",
       p2: "Los socios y representantes son Xavier Bosch i Solé y Carles Giner i Garriga, ingenieros de Caminos, Canales y Puertos, especialidad de estructuras, con más de treinta años de práctica.",
@@ -427,17 +392,10 @@ export const messages = {
           role: "Ingeniero de Caminos, Canales y Puertos · Estructuras",
         },
       ],
-    },
-    quality: {
-      kicker: "06 — Gestión",
-      title: "Calidad, medio ambiente y prevención.",
-      text: "El sistema integrado de gestión cumple UNE-EN-ISO 9001:2015, UNE-EN-ISO 14001:2015 e ISO 45001:2018. La política la firman los socios-directores y se revisa periódicamente.",
-      badges: ["ISO 9001", "ISO 14001", "ISO 45001"],
-      moves:
-        "Estamos adheridos al programa MOVES III (ICAEN / Next Generation EU), destinado a una movilidad más limpia: vehículos eléctricos y puntos de recarga.",
+      photoAlt: "Montaje de un tablero mixto de acero y hormigón",
     },
     contact: {
-      kicker: "07 — Contacto",
+      kicker: "05 — Contacto",
       title: "Escríbanos o visiten la oficina.",
       lead: "Carrer Berruguete, 98 · 08035 Barcelona",
       phoneLabel: "Teléfono",
@@ -453,8 +411,207 @@ export const messages = {
     },
     footer: {
       legal: "CETRES Enginyers, SLP",
-      cookies: "Esta página no almacena cookies.",
       rights: "Todos los derechos reservados.",
+    },
+  },
+  en: {
+    meta: {
+      title: "CETRES Enginyers — Civil engineering consultancy in Barcelona",
+      description:
+        "Civil engineering consultancy founded in 1988. Studies, designs, technical assistance and site supervision for public authorities, concessionaires and private clients.",
+    },
+    nav: {
+      empresa: "Company",
+      serveis: "Services",
+      projectes: "Projects",
+      equip: "Team",
+      contacte: "Contact",
+    },
+    ui: {
+      skip: "Skip to content",
+      lang: "Language",
+      menu: "Open menu",
+      stats: "Figures",
+    },
+    hero: {
+      eyebrow: "Civil engineering consultancy · Barcelona · 1988",
+      title: "Studies, designs and site supervision.",
+      lead: "Since 1988 we have worked with the main public authorities and concessionaires in Catalonia and Spain, and with private clients. We specialise in roads, motorways and structural design.",
+      ctaProjects: "View projects",
+      ctaContact: "Contact",
+      caption: "Linear works and structures. Catalonia.",
+      photoAlt: "Tunnel portals and a connecting road on a linear works site in Catalonia",
+    },
+    stats: {
+      year: "Founded",
+      years: "Years in practice",
+      fields: "Fields of work",
+      iso: "Management standards",
+    },
+    about: {
+      kicker: "01 — Company",
+      title: "A settled technical office, with its own judgement.",
+      p1: "CETRES Enginyers, SLP was founded in June 1988 in Barcelona. Since then we have worked in civil engineering: studies and designs, technical assistance and site supervision, on civil works and urban development.",
+      p2: "We have taken part in major infrastructure — motorways, roads, bridges, rail and underground works — and we keep lasting working relationships with public authorities, concessionaires and contractors.",
+      p3: "What we bring is technical and specific: a sound solution, a credible programme, and cost and quality control that can be followed.",
+      photoAlt: "Soffit of a concrete bridge over a watercourse",
+    },
+    services: {
+      kicker: "02 — Services",
+      title: "What we do, and how we do it.",
+      intro:
+        "We bring site knowledge and our own calculation and management tools. On every commission we look for the right technical solution and hold cost, programme and quality.",
+      items: [
+        {
+          n: "01",
+          title: "Studies and designs",
+          text: "Construction, preliminary and complementary designs. Alignment, structures, urban development and signing, with software developed in-house.",
+        },
+        {
+          n: "02",
+          title: "Technical assistance",
+          text: "Support to the client, the concessionaire and the contractor: structural analysis, design changes and alignment adjustments during construction.",
+        },
+        {
+          n: "03",
+          title: "Site supervision",
+          text: "Site direction and follow-up of civil works. Control of the works, safety and programme, with clear records.",
+        },
+        {
+          n: "04",
+          title: "Structural design",
+          text: "Design and analysis of structures on linear works: reinforced and prestressed concrete, and composite structures. It has been the office’s specialism from the start.",
+        },
+      ],
+      fieldsTitle: "Fields",
+      fields: [
+        "Motorways",
+        "Roads",
+        "Structures",
+        "Rail",
+        "Underground works",
+        "Urban development",
+        "Signing",
+      ],
+    },
+    projects: {
+      kicker: "03 — Projects",
+      title: "A selection of commissions.",
+      intro:
+        "Motorways, roads and structures for ACESA, Abertis, Invicat, Infraestructures.cat and other authorities. These are some representative works.",
+      items: [
+        {
+          tag: "Motorway · Construction design",
+          title: "Improved connectivity. Mataró West interchange, C-32",
+          meta: "Invicat / Abertis · Argentona–Mataró · 2015",
+          note: "KP 99+000 to 101+000. Thirteen months. Estimated cost 12 M€.",
+          image: "/images/plans/PR-2015-22.jpg",
+          alt: "Plan of the Mataró West interchange on the C-32 motorway",
+        },
+        {
+          tag: "Motorway · As-built",
+          title: "Third lane. AP-7, Vilademuls–Figueres South",
+          meta: "ACESA – Abertis · 2009–2015",
+          note: "La Jonquera–Salou. KP 47+000 to 29+660.",
+          image: "/images/plans/PR-2015-09.jpg",
+          alt: "As-built plan of the third lane on the AP-7",
+        },
+        {
+          tag: "Structure · Construction design",
+          title: "New bridge. Junction 100 on the C-32, Mataró",
+          meta: "Invicat / Abertis · 2016",
+          note: "Girona–Mataró slip road. Six months.",
+          image: "/images/plans/PR-2016-08.jpg",
+          alt: "Plan of the new bridge at junction 100 on the C-32",
+        },
+        {
+          tag: "Motorway · Complementary design",
+          title: "Toll plaza enlargement. AP-7, Girona South",
+          meta: "Abertis · Salt / Vilablareix · 2015",
+          note: "Eleven months. Estimated cost 3.2 M€.",
+          image: "/images/plans/PR-2015-02.jpg",
+          alt: "Plan of the Girona South toll plaza enlargement",
+        },
+        {
+          tag: "Road · Construction design",
+          title: "Roundabout on the GI-682. Bellcaire d’Empordà",
+          meta: "Infraestructures.cat · 2016",
+          note: "Local junction improvement. KP 2+500.",
+          image: "/images/plans/PR-2016-14.jpg",
+          alt: "Plan of the roundabout in Bellcaire d’Empordà",
+        },
+        {
+          tag: "Urban development · Design",
+          title: "Urban improvement. Filvisa Sector II, Viladecavalls",
+          meta: "GESDIP, SAU · 2016",
+          note: "Four months.",
+          image: "/images/plans/PR-2017-03.jpg",
+          alt: "Urban development plan for the Filvisa sector in Viladecavalls",
+        },
+      ],
+      more: [
+        {
+          title: "Bridge over the Muga",
+          meta: "GI-504, Boadella d’Empordà · Site supervision · 2004",
+        },
+        {
+          title: "Bridge over the Llobregat",
+          meta: "C-1414, Esparreguera–Olesa · Site supervision · 2001",
+        },
+        {
+          title: "Third lane in the median. AP-7",
+          meta: "Mediterranean interchange–Vila-seca/Salou · Design · ACESA · 2007",
+        },
+        {
+          title: "Dualling of the C-31",
+          meta: "Castell–Platja d’Aro–Palamós · Site supervision · 2010",
+        },
+        {
+          title: "Noise barrier. C-32",
+          meta: "Mataró · Construction design · Invicat / Abertis · 2016",
+        },
+        {
+          title: "Bellaterra station structures",
+          meta: "Ferrocarrils de la Generalitat · Design · 1992",
+        },
+      ],
+    },
+    team: {
+      kicker: "04 — Team",
+      title: "Technical judgement, direct dealing.",
+      p1: "The office is made up of professionals with recognised experience in each field. Commitment and care in how we work — inside the office and with the client — are part of the method, not an extra.",
+      p2: "The partners are Xavier Bosch i Solé and Carles Giner i Garriga, civil engineers (Ingenieros de Caminos, Canales y Puertos), structures specialism, with more than thirty years of practice.",
+      partnersLabel: "Managing partners",
+      partners: [
+        {
+          name: "Xavier Bosch i Solé",
+          role: "Civil engineer (Caminos, Canales y Puertos) · Structures",
+        },
+        {
+          name: "Carles Giner i Garriga",
+          role: "Civil engineer (Caminos, Canales y Puertos) · Structures",
+        },
+      ],
+      photoAlt: "Erection of a steel-and-concrete composite deck",
+    },
+    contact: {
+      kicker: "05 — Contact",
+      title: "Write to us or visit the office.",
+      lead: "Carrer Berruguete, 98 · 08035 Barcelona",
+      phoneLabel: "Telephone",
+      emailLabel: "Email",
+      map: "Open in maps",
+      formName: "First name",
+      formLast: "Surname",
+      formEmail: "Email",
+      formMessage: "Message",
+      formSubmit: "Send message",
+      formNote: "The form opens your email client. You can also write to us at",
+      clients: "Public authorities and concessionaires we have worked with",
+    },
+    footer: {
+      legal: "CETRES Enginyers, SLP",
+      rights: "All rights reserved.",
     },
   },
 } as const;

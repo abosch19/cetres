@@ -1,6 +1,6 @@
 ---
 import Logo from "./Logo.astro";
-import type { Lang, Messages } from "../i18n";
+import { prefixFor, type Lang, type Messages } from "../i18n";
 
 interface Props {
   lang: Lang;
@@ -8,10 +8,10 @@ interface Props {
 }
 
 const { lang, t } = Astro.props;
-const prefix = lang === "es" ? "/es" : "";
+const prefix = prefixFor(lang);
 ---
 
-<a class="skip" href="#contingut">{lang === "es" ? "Saltar al contenido" : "Salta al contingut"}</a>
+<a class="skip" href="#contingut">{t.ui.skip}</a>
 <header class="header">
   <div class="header-inner">
     <a class="brand" href={prefix || "/"} aria-label="CETRES Enginyers">
@@ -27,17 +27,19 @@ const prefix = lang === "es" ? "/es" : "";
     </nav>
 
     <div class="header-tools">
-      <div class="lang" aria-label={lang === "es" ? "Idioma" : "Idioma"}>
+      <div class="lang" aria-label={t.ui.lang}>
         <a href="/" aria-current={lang === "ca" ? "page" : undefined}>CA</a>
         <span aria-hidden="true">/</span>
         <a href="/es/" aria-current={lang === "es" ? "page" : undefined}>ES</a>
+        <span aria-hidden="true">/</span>
+        <a href="/en/" aria-current={lang === "en" ? "page" : undefined}>EN</a>
       </div>
       <button
         class="menu-btn"
         type="button"
         aria-expanded="false"
         aria-controls="nav-panel"
-        aria-label={lang === "es" ? "Abrir menú" : "Obre el menú"}
+        aria-label={t.ui.menu}
       >
         <span></span>
       </button>

@@ -29,4 +29,52 @@ export const clients = [
     width: 747,
     height: 176,
   },
+  {
+    name: "Adif",
+    src: "/images/clients/adif.svg",
+    width: 468,
+    height: 165,
+  },
+  {
+    name: "BIMSA",
+    src: "/images/clients/bimsa.png",
+    width: 761,
+    height: 158,
+  },
+  {
+    name: "Bon Preu",
+    src: "/images/clients/bonpreu.svg",
+    width: 500,
+    height: 73,
+  },
+  {
+    name: "Ajuntament de Taradell",
+    src: "/images/clients/taradell.svg",
+    width: 480,
+    height: 132,
+  },
+  {
+    name: "FGC",
+    src: "/images/clients/fgc.svg",
+    width: 126,
+    height: 50,
+  },
+  {
+    name: "Agència Catalana de l'Aigua",
+    src: "/images/clients/aca.svg",
+    width: 249,
+    height: 68,
+  },
+  {
+    name: "Ajuntament d'Olot",
+    src: "/images/clients/olot.png",
+    width: 260,
+    height: 53,
+  },
+  {
+    name: "Copcisa",
+    src: "/images/clients/copcisa.svg",
+    width: 2200,
+    height: 769,
+  },
 ] as const;

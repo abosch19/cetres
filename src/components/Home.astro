@@ -1,7 +1,7 @@
 ---
 import Header from "./Header.astro";
 import { clients } from "../data/clients";
-import type { Lang, Messages } from "../i18n";
+import { prefixFor, type Lang, type Messages } from "../i18n";
 
 interface Props {
   lang: Lang;
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { lang, t } = Astro.props;
-const prefix = lang === "es" ? "/es" : "";
+const prefix = prefixFor(lang);
 const year = new Date().getFullYear();
 ---
 
@@ -31,9 +31,7 @@ const year = new Date().getFullYear();
     <figure class="hero-film">
       <img
         src="/images/photos/8.jpg"
-        alt={lang === "es"
-          ? "Bocas de túnel y vial de conexión en una obra lineal en Cataluña"
-          : "Boques de túnel i vial de connexió en una obra lineal a Catalunya"}
+        alt={t.hero.photoAlt}
         width="1000"
         height="300"
       />
@@ -41,7 +39,7 @@ const year = new Date().getFullYear();
     </figure>
   </section>
 
-  <section class="stats" aria-label={lang === "es" ? "Datos" : "Dades"}>
+  <section class="stats" aria-label={t.ui.stats}>
     <div class="wrap stats-grid">
       <div class="stat">
         <b>1988</b>
@@ -77,9 +75,7 @@ const year = new Date().getFullYear();
         <figure class="film">
           <img
             src="/images/photos/7.jpg"
-            alt={lang === "es"
-              ? "Intradós de un puente de hormigón sobre un cauce"
-              : "Intradós d’un pont de formigó sobre un llit fluvial"}
+            alt={t.about.photoAlt}
             width="1000"
             height="300"
           />
@@ -152,26 +148,6 @@ const year = new Date().getFullYear();
     </div>
   </section>
 
-  <section class="section" id="eines">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="kicker">{t.tools.kicker}</p>
-        <h2 class="display">{t.tools.title}</h2>
-        <p class="lede">{t.tools.intro}</p>
-      </div>
-      <div class="tool-list">
-        {
-          t.tools.items.map((item) => (
-            <article class="tool">
-              <h3>{item.name}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="equip">
     <div class="wrap">
       <div class="section-head">
@@ -186,9 +162,7 @@ const year = new Date().getFullYear();
         <figure class="film">
           <img
             src="/images/photos/9.jpg"
-            alt={lang === "es"
-              ? "Montaje de un tablero mixto de acero y hormigón"
-              : "Muntatge d’un tauler mixt d’acer i formigó"}
+            alt={t.team.photoAlt}
             width="1000"
             height="300"
           />
@@ -205,20 +179,6 @@ const year = new Date().getFullYear();
           ))
         }
       </div>
-    </div>
-  </section>
-
-  <section class="section" id="gestio">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="kicker">{t.quality.kicker}</p>
-        <h2 class="display">{t.quality.title}</h2>
-      </div>
-      <p class="lede">{t.quality.text}</p>
-      <div class="badges">
-        {t.quality.badges.map((badge) => <span class="badge">{badge}</span>)}
-      </div>
-      <p class="moves">{t.quality.moves}</p>
     </div>
   </section>
 
@@ -302,7 +262,6 @@ const year = new Date().getFullYear();
 <footer class="footer">
   <div class="wrap footer-inner">
     <p>{t.footer.legal}</p>
-    <p>{t.footer.cookies}</p>
     <p>© {year} · {t.footer.rights}</p>
   </div>
 </footer>
