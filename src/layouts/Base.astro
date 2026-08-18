@@ -53,6 +53,7 @@ const canonical = path ? `${path}/` : "/";
               : [navigator.language || ""];
           for (var i = 0; i < list.length; i++) {
             var code = String(list[i]).toLowerCase().split("-")[0];
+            if (code === "cat") code = "ca";
             if (isLang(code)) {
               lang = code;
               break;

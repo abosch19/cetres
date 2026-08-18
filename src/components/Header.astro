@@ -14,7 +14,7 @@ const prefix = prefixFor(lang);
 <a class="skip" href="#contingut">{t.ui.skip}</a>
 <header class="header">
   <div class="header-inner">
-    <a class="brand" href={prefix || "/"} aria-label="CETRES Enginyers">
+    <a class="brand" href={hrefFor(lang)} aria-label="CETRES Enginyers">
       <Logo />
     </a>
 
@@ -73,15 +73,17 @@ const prefix = prefixFor(lang);
   }
 
   document.querySelectorAll<HTMLAnchorElement>(".lang a[data-lang]").forEach((link) => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (event) => {
       const next = link.dataset.lang;
       if (next !== "ca" && next !== "es" && next !== "en") return;
+      event.preventDefault();
       try {
         localStorage.setItem("lang", next);
       } catch {
         // private mode
       }
       document.cookie = `lang=${next}; Path=/; Max-Age=31536000; SameSite=Lax`;
+      location.assign(link.href);
     });
   });
 </script>

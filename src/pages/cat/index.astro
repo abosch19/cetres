@@ -1,0 +1,11 @@
+---
+import Base from "../../layouts/Base.astro";
+import Home from "../../components/Home.astro";
+import { messages } from "../../i18n";
+
+const t = messages.ca;
+---
+
+<Base lang="ca" title={t.meta.title} description={t.meta.description}>
+  <Home lang="ca" t={t} />
+</Base>

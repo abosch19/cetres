@@ -45,6 +45,7 @@ export function parseAcceptLanguage(header: string): string[] {
 export function detectLang(tags: readonly string[]): Lang {
   for (const raw of tags) {
     const code = raw.trim().toLowerCase().split(/[-_]/)[0];
+    if (code === "cat") return "ca";
     if (isLang(code)) return code;
   }
   return fallbackLang;
