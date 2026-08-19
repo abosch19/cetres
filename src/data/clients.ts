@@ -84,12 +84,6 @@ export const clients = [
     height: 523,
   },
   {
-    name: "INVICAT",
-    src: "/images/clients/invicat.svg",
-    width: 267,
-    height: 65,
-  },
-  {
     name: "Ajuntament de Castelldefels",
     src: "/images/clients/castelldefels.svg",
     width: 132,
@@ -98,14 +92,14 @@ export const clients = [
   {
     name: "McDonald's",
     src: "/images/clients/mcdonalds.svg",
-    width: 247,
-    height: 52,
+    width: 273,
+    height: 239,
   },
   {
-    name: "IDIADA",
+    name: "Applus+ IDIADA",
     src: "/images/clients/idiada.svg",
-    width: 265,
-    height: 60,
+    width: 434,
+    height: 238,
   },
   {
     name: "Ajuntament de Sant Boi de Llobregat",
@@ -138,33 +132,9 @@ export const clients = [
     height: 180,
   },
   {
-    name: "AUCAT",
-    src: "/images/clients/aucat.svg",
-    width: 226,
-    height: 65,
-  },
-  {
-    name: "ACESA",
-    src: "/images/clients/acesa.svg",
-    width: 226,
-    height: 65,
-  },
-  {
-    name: "AULESA",
-    src: "/images/clients/aulesa.svg",
-    width: 265,
-    height: 65,
-  },
-  {
-    name: "AVASA",
-    src: "/images/clients/avasa.svg",
-    width: 230,
-    height: 65,
-  },
-  {
-    name: "AUMAR",
-    src: "/images/clients/aumar.svg",
-    width: 248,
-    height: 64,
+    name: "Autopistas",
+    src: "/images/clients/autopistas.svg",
+    width: 380,
+    height: 108,
   },
 ] as const;
