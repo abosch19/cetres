@@ -12,7 +12,12 @@ interface Props {
 const { lang, t } = Astro.props;
 const home = hrefFor(lang);
 const year = new Date().getFullYear();
-const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)];
+const perRow = Math.ceil(clients.length / 3);
+const clientRows = [
+  clients.slice(0, perRow),
+  clients.slice(perRow, perRow * 2),
+  clients.slice(perRow * 2),
+];
 ---
 
 <Header lang={lang} t={t} />
@@ -33,8 +38,13 @@ const clientRows = [clients.slice(0, 5), clients.slice(5, 10), clients.slice(10)
     <figure class="hero-film">
       <picture>
         <source
+          type="image/avif"
+          srcset="/images/photos/8-480.avif 480w, /images/photos/8-800.avif 800w, /images/photos/8.avif 1000w"
+          sizes="100vw"
+        />
+        <source
           type="image/webp"
-          srcset="/images/photos/8-800.webp 800w, /images/photos/8.webp 1000w"
+          srcset="/images/photos/8-480.webp 480w, /images/photos/8-800.webp 800w, /images/photos/8.webp 1000w"
           sizes="100vw"
         />
         <img
