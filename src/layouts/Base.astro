@@ -31,6 +31,16 @@ const structuredData = jsonLd(lang, title, description);
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#f2eee6" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <style is:inline>
+      html,
+      body {
+        background-color: #f2eee6;
+        margin: 0;
+      }
+      html[data-pending-lang] {
+        visibility: hidden;
+      }
+    </style>
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={business.legalName} />
@@ -80,11 +90,6 @@ const structuredData = jsonLd(lang, title, description);
         location.replace(dest);
       })();
     </script>
-    <style is:inline>
-      html[data-pending-lang] {
-        visibility: hidden;
-      }
-    </style>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -129,12 +134,12 @@ const structuredData = jsonLd(lang, title, description);
       imagesizes="100vw"
       fetchpriority="high"
     />
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    <Analytics />
   </head>
   <body>
     <div class="safari-tint safari-tint-top" aria-hidden="true"></div>
     <div class="safari-tint safari-tint-bottom" aria-hidden="true"></div>
     <slot />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <Analytics />
   </body>
 </html>
