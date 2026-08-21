@@ -1019,11 +1019,6 @@ blockquote {
   animation-duration: 68s;
 }
 
-.client-marquee:hover .client-track,
-.client-marquee:focus-within .client-track {
-  animation-play-state: paused;
-}
-
 .client-track li {
   display: flex;
   align-items: center;
