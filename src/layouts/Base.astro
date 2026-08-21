@@ -41,6 +41,9 @@ const structuredData = jsonLd(lang, title, description);
         visibility: hidden;
       }
     </style>
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={business.legalName} />

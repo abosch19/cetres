@@ -25,12 +25,22 @@ const clientRows = [
 <main id="contingut">
   <section class="hero">
     <div class="wrap hero-grid">
-      <div class="hero-copy">
+      <div class="hero-copy" data-reveal>
         <p class="eyebrow">{t.hero.eyebrow}</p>
         <h1 class="display">{t.hero.title}</h1>
         <p class="lede">{t.hero.lead}</p>
         <div class="actions">
-          <a class="btn btn-solid" href={`${home}#projectes`}>{t.hero.ctaProjects}</a>
+          <a class="btn btn-solid" href={`${home}#projectes`}>
+            {t.hero.ctaProjects}
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <path
+                d="M1 8h13M9.5 3.5 14 8l-4.5 4.5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              ></path>
+            </svg>
+          </a>
           <a class="btn btn-ghost" href={`${home}#contacte`}>{t.hero.ctaContact}</a>
         </div>
       </div>
@@ -60,7 +70,7 @@ const clientRows = [
   </section>
 
   <section class="stats" aria-label={t.ui.stats}>
-    <div class="wrap stats-grid">
+    <div class="wrap stats-grid" data-reveal-stagger>
       <div class="stat">
         <b>1988</b>
         <span>{t.stats.year}</span>
@@ -82,17 +92,17 @@ const clientRows = [
 
   <section class="section" id="empresa">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <p class="kicker">{t.about.kicker}</p>
         <h2 class="display">{t.about.title}</h2>
       </div>
-      <div class="split-stack">
+      <div class="split-stack" data-reveal>
         <div class="prose">
           <p>{t.about.p1}</p>
           <p>{t.about.p2}</p>
           <p>{t.about.p3}</p>
         </div>
-        <figure class="film">
+        <figure class="film frame-marks">
           <picture>
             <source
               type="image/webp"
@@ -143,12 +153,12 @@ const clientRows = [
 
   <section class="section" id="serveis">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <p class="kicker">{t.services.kicker}</p>
         <h2 class="display">{t.services.title}</h2>
         <p class="lede">{t.services.intro}</p>
       </div>
-      <div class="service-list">
+      <div class="service-list" data-reveal-stagger>
         {
           t.services.items.map((item) => (
             <article class="service">
@@ -170,12 +180,12 @@ const clientRows = [
 
   <section class="section" id="projectes">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <p class="kicker">{t.projects.kicker}</p>
         <h2 class="display">{t.projects.title}</h2>
         <p class="lede">{t.projects.intro}</p>
       </div>
-      <div class="project-grid">
+      <div class="project-grid" data-reveal-stagger>
         {
           t.projects.items.map((item) => (
             <article class="project">
@@ -214,16 +224,16 @@ const clientRows = [
 
   <section class="section" id="equip">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <p class="kicker">{t.team.kicker}</p>
         <h2 class="display">{t.team.title}</h2>
       </div>
-      <div class="split-stack">
+      <div class="split-stack" data-reveal>
         <div class="prose">
           <p>{t.team.p1}</p>
           <p>{t.team.p2}</p>
         </div>
-        <figure class="film">
+        <figure class="film frame-marks">
           <picture>
             <source
               type="image/webp"
@@ -257,13 +267,13 @@ const clientRows = [
 
   <section class="section" id="contacte">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <p class="kicker">{t.contact.kicker}</p>
         <h2 class="display">{t.contact.title}</h2>
       </div>
-      <div class="vcard">
+      <div class="contact-panel frame-marks" data-reveal>
         <address>
-          <p>{t.contact.lead}</p>
+          <p class="contact-lead">{t.contact.lead}</p>
           <dl>
             <div>
               <dt>{t.contact.phoneLabel}</dt>
@@ -279,11 +289,20 @@ const clientRows = [
         </address>
         <p>
           <a
-            href="https://maps.google.com/?q=Carrer+Berruguete+98+08035+Barcelona"
+            class="btn map-btn"
+            href="https://maps.app.goo.gl/AMjT74PeDSKU6vZu9"
             target="_blank"
             rel="noreferrer"
           >
             {t.contact.map}
+            <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
+              <path
+                d="M4 12 12 4M6 3.5h5.5V9"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              ></path>
+            </svg>
           </a>
         </p>
       </div>
@@ -292,6 +311,7 @@ const clientRows = [
 </main>
 
 <footer class="footer">
+  <div class="wrap footer-inner" data-reveal>
   <div class="wrap footer-inner">
     <div>
       <p>{t.footer.legal}</p>
@@ -304,3 +324,23 @@ const clientRows = [
     <p>© {year} · {t.footer.rights}</p>
   </div>
 </footer>
+
+<script>
+  const targets = document.querySelectorAll<HTMLElement>("[data-reveal], [data-reveal-stagger]");
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0 },
+    );
+    targets.forEach((el) => observer.observe(el));
+  } else {
+    targets.forEach((el) => el.classList.add("is-in"));
+  }
+</script>

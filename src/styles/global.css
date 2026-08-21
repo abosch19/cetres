@@ -49,6 +49,7 @@
   --paper-3: #d9d1c3;
   --terracotta: #b15c54;
   --terracotta-deep: #8d453e;
+  --terracotta-soft: #d99287;
   --line: rgba(22, 20, 18, 0.12);
   --line-strong: rgba(22, 20, 18, 0.22);
   --white: #faf8f3;
@@ -134,6 +135,11 @@ a {
   text-underline-offset: 0.22em;
 }
 
+::selection {
+  background: var(--terracotta);
+  color: var(--white);
+}
+
 button,
 input,
 textarea {
@@ -170,12 +176,23 @@ blockquote {
 }
 
 .kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
   font-family: var(--mono);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--terracotta-deep);
   margin-bottom: 1rem;
+}
+
+.kicker::before {
+  content: "";
+  width: 2.1rem;
+  height: 1px;
+  background: var(--terracotta);
+  flex-shrink: 0;
 }
 
 .display {
@@ -201,6 +218,9 @@ blockquote {
   display: flex;
   align-items: center;
   background-color: var(--paper);
+  background-color: color-mix(in srgb, var(--paper) 86%, transparent);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  backdrop-filter: blur(12px) saturate(1.4);
   border-bottom: 1px solid var(--line);
 }
 
@@ -301,6 +321,11 @@ blockquote {
   border: 1px solid var(--line-strong);
   background: transparent;
   cursor: pointer;
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.menu-btn:hover {
+  border-color: var(--ink);
 }
 
 .menu-btn span,
@@ -318,6 +343,7 @@ blockquote {
   content: "";
   position: absolute;
   left: 0;
+  transition: transform 0.3s var(--ease), top 0.3s var(--ease);
 }
 
 .menu-btn span::before {
@@ -328,6 +354,20 @@ blockquote {
   top: 5px;
 }
 
+.menu-btn[aria-expanded="true"] span {
+  background: transparent;
+}
+
+.menu-btn[aria-expanded="true"] span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menu-btn[aria-expanded="true"] span::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
 .nav-panel {
   display: none;
   position: absolute;
@@ -336,12 +376,24 @@ blockquote {
   left: 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
-  padding: 1.25rem var(--pad) 1.5rem;
+  padding: 1.25rem var(--pad) 1.75rem;
 }
 
 .nav-panel.open {
   display: grid;
   gap: 1rem;
+  animation: panel-in 0.4s var(--ease);
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .nav-panel a {
@@ -354,6 +406,18 @@ blockquote {
 
 .hero {
   padding: clamp(3rem, 8vw, 6.5rem) 0 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: min(70vh, 44rem);
+  pointer-events: none;
+  background:
+    radial-gradient(52% 46% at 12% 18%, rgba(177, 92, 84, 0.08), transparent 72%),
+    radial-gradient(40% 42% at 88% 6%, rgba(22, 20, 18, 0.05), transparent 70%);
 }
 
 .hero-grid {
@@ -366,6 +430,9 @@ blockquote {
 }
 
 .hero .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: var(--mono);
   font-size: 0.74rem;
   letter-spacing: 0.12em;
@@ -374,14 +441,22 @@ blockquote {
   margin-bottom: 1.4rem;
 }
 
+.hero .eyebrow::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  background: var(--terracotta);
+  flex-shrink: 0;
+}
+
 .hero h1 {
-  font-size: clamp(3rem, 8.4vw, 6.4rem);
+  font-size: clamp(3rem, 9vw, 7rem);
   margin-bottom: 1.4rem;
 }
 
 .hero .lede {
-  font-size: 1.08rem;
-  margin-bottom: 2rem;
+  font-size: 1.12rem;
+  margin-bottom: 2.2rem;
 }
 
 .actions {
@@ -394,18 +469,35 @@ blockquote {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.6rem;
   min-height: 2.85rem;
   padding: 0.7rem 1.2rem;
   border: 1px solid var(--ink);
   text-decoration: none;
   font-size: 0.92rem;
   transition: background 0.25s var(--ease), color 0.25s var(--ease),
-    transform 0.25s var(--ease);
+    border-color 0.25s var(--ease), transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+
+.btn svg {
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease);
+}
+
+.btn:hover svg,
+.btn:focus-visible svg {
+  transform: translateX(4px);
 }
 
 .btn-solid {
   background: var(--ink);
   color: var(--paper);
+}
+
+.btn-solid:hover,
+.btn-solid:focus-visible {
+  box-shadow: 0 14px 30px -14px rgba(141, 69, 62, 0.55);
 }
 
 .btn-ghost {
@@ -487,6 +579,11 @@ blockquote {
   line-height: 1;
 }
 
+.stat b::after {
+  content: ".";
+  color: var(--terracotta);
+}
+
 .stat span {
   display: block;
   margin-top: 0.45rem;
@@ -546,6 +643,32 @@ blockquote {
   object-fit: cover;
 }
 
+.frame-marks {
+  --tick: var(--terracotta);
+  position: relative;
+}
+
+.frame-marks::after {
+  content: "";
+  position: absolute;
+  inset: -13px;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--tick), var(--tick)),
+    linear-gradient(var(--tick), var(--tick)),
+    linear-gradient(var(--tick), var(--tick)),
+    linear-gradient(var(--tick), var(--tick)),
+    linear-gradient(var(--tick), var(--tick)),
+    linear-gradient(var(--tick), var(--tick)),
+    linear-gradient(var(--tick), var(--tick)),
+    linear-gradient(var(--tick), var(--tick));
+  background-position: left top, left top, right top, right top,
+    left bottom, left bottom, right bottom, right bottom;
+  background-size: 14px 1px, 1px 14px, 14px 1px, 1px 14px,
+    14px 1px, 1px 14px, 14px 1px, 1px 14px;
+  background-repeat: no-repeat;
+}
+
 /* Services */
 
 .service-list {
@@ -559,6 +682,11 @@ blockquote {
   gap: 0.55rem;
   padding: 1.35rem 0 1.45rem;
   border-bottom: 1px solid var(--line);
+  transition: background 0.3s var(--ease);
+}
+
+.service:hover {
+  background: linear-gradient(to right, rgba(250, 248, 243, 0.9), transparent 65%);
 }
 
 .service .n {
@@ -566,12 +694,23 @@ blockquote {
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   color: var(--terracotta-deep);
+  transition: color 0.3s var(--ease);
 }
 
 .service h3 {
   font-family: var(--serif);
   font-size: 1.7rem;
   font-weight: 400;
+  transition: transform 0.35s var(--ease), color 0.35s var(--ease);
+}
+
+.service:hover .n {
+  color: var(--terracotta);
+}
+
+.service:hover h3 {
+  transform: translateX(6px);
+  color: var(--terracotta-deep);
 }
 
 .service p {
@@ -615,17 +754,20 @@ blockquote {
   background: var(--white);
   border: 1px solid var(--line);
   overflow: hidden;
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease),
+    border-color 0.35s var(--ease);
 }
 
 .project:hover {
   transform: translateY(-3px);
+  border-color: var(--line-strong);
   box-shadow: var(--shadow);
 }
 
 .project-fig {
   background: #efe8d8;
   border-bottom: 1px solid var(--line);
+  overflow: hidden;
 }
 
 .project-fig img {
@@ -633,6 +775,11 @@ blockquote {
   height: 18rem;
   object-fit: cover;
   object-position: center;
+  transition: transform 0.7s var(--ease);
+}
+
+.project:hover .project-fig img {
+  transform: scale(1.045);
 }
 
 .project-body {
@@ -640,8 +787,11 @@ blockquote {
 }
 
 .project-body .tag {
+  display: inline-block;
+  border: 1px solid var(--line-strong);
+  padding: 0.22rem 0.55rem;
   font-family: var(--mono);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--terracotta-deep);
@@ -676,11 +826,21 @@ blockquote {
   gap: 0.2rem;
   padding: 1rem 0;
   border-bottom: 1px solid var(--line);
+  transition: background 0.3s var(--ease);
+}
+
+.more-item:hover {
+  background: linear-gradient(to right, rgba(250, 248, 243, 0.9), transparent 60%);
 }
 
 .more-item h3 {
   font-size: 1.05rem;
   font-weight: 500;
+  transition: color 0.3s var(--ease);
+}
+
+.more-item:hover h3 {
+  color: var(--terracotta-deep);
 }
 
 .more-item p {
@@ -699,6 +859,11 @@ blockquote {
 .partner {
   padding: 1.15rem 0;
   border-top: 1px solid var(--line);
+  transition: border-color 0.3s var(--ease);
+}
+
+.partner:hover {
+  border-top-color: var(--terracotta);
 }
 
 .partner:last-child {
@@ -726,40 +891,84 @@ blockquote {
 
 /* Contact */
 
-.vcard {
+.contact-panel {
+  --tick: rgba(250, 248, 243, 0.38);
+  position: relative;
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(1.9rem, 5vw, 3.6rem);
   display: grid;
-  gap: 1.1rem;
+  gap: 1.6rem;
 }
 
-.vcard address {
+.contact-panel::after {
+  inset: 10px;
+}
+
+.contact-panel address {
   display: grid;
-  gap: 1.1rem;
+  gap: 1.5rem;
   margin: 0;
   font-style: normal;
 }
 
-.vcard dl {
+.contact-lead {
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  max-width: 30rem;
+}
+
+.contact-panel dl {
   display: grid;
-  gap: 1.1rem;
+  gap: 1.3rem;
   margin: 0;
 }
 
-.vcard a {
-  color: var(--ink);
-}
-
-.vcard dt {
+.contact-panel dt {
   font-family: var(--mono);
   font-size: 0.68rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: 0.2rem;
+  color: var(--terracotta-soft);
+  margin-bottom: 0.25rem;
 }
 
-.vcard dd {
+.contact-panel dd {
   margin: 0;
-  font-size: 1.12rem;
+}
+
+.contact-panel dd a {
+  color: var(--paper);
+  text-decoration: none;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  background-image: linear-gradient(var(--terracotta), var(--terracotta));
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100% 1px;
+  padding-bottom: 0.15em;
+  transition: background-size 0.35s var(--ease), color 0.3s var(--ease);
+}
+
+.contact-panel dd a:hover,
+.contact-panel dd a:focus-visible {
+  color: var(--terracotta-soft);
+  background-size: 32% 1px;
+}
+
+.contact-panel .map-btn {
+  justify-self: start;
+  border-color: rgba(250, 248, 243, 0.45);
+  color: var(--paper);
+}
+
+.contact-panel .map-btn:hover,
+.contact-panel .map-btn:focus-visible {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--ink);
+  box-shadow: none;
 }
 
 .clients-band {
@@ -839,7 +1048,7 @@ blockquote {
 
 .footer {
   border-top: 1px solid var(--line);
-  padding: 1.6rem 0 2.2rem;
+  padding: 2rem 0 2.6rem;
   color: var(--ink-soft);
   font-size: 0.88rem;
 }
@@ -851,6 +1060,52 @@ blockquote {
 
 .footer a {
   color: inherit;
+  text-decoration-color: var(--line-strong);
+  transition: color 0.25s var(--ease), text-decoration-color 0.25s var(--ease);
+}
+
+.footer a:hover,
+.footer a:focus-visible {
+  color: var(--terracotta-deep);
+  text-decoration-color: var(--terracotta);
+}
+
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+html.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+html.js [data-reveal-stagger] > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+html.js [data-reveal-stagger].is-in > * {
+  opacity: 1;
+  transform: none;
+}
+
+html.js [data-reveal-stagger] > *:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+html.js [data-reveal-stagger] > *:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+html.js [data-reveal-stagger] > *:nth-child(4) {
+  transition-delay: 0.24s;
+}
+
+html.js [data-reveal-stagger] > *:nth-child(n + 5) {
+  transition-delay: 0.3s;
 }
 
 /* Desktop */
@@ -897,8 +1152,13 @@ blockquote {
     align-items: start;
   }
 
-  .vcard {
-    max-width: 32rem;
+  .contact-panel {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+
+  .contact-panel address {
+    gap: 1.8rem;
   }
 
   .service {
@@ -994,6 +1254,12 @@ blockquote {
   *::after {
     transition: none !important;
     animation: none !important;
+  }
+
+  html.js [data-reveal],
+  html.js [data-reveal-stagger] > * {
+    opacity: 1;
+    transform: none;
   }
 
   .client-marquee {
