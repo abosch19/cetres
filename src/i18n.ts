@@ -24,7 +24,6 @@ export const messages = {
       stats: "Dades",
     },
     hero: {
-      eyebrow: "Consultoria d’enginyeria civil · Barcelona · 1988",
       title: "Estudis, projectes i direcció d’obra.",
       lead: "Des de 1988 treballem amb les principals administracions i concessionàries de Catalunya i Espanya, i amb empresa privada. Especialistes en carreteres, autopistes i càlcul d’estructures.",
       ctaProjects: "Veure projectes",
@@ -39,7 +38,6 @@ export const messages = {
       iso: "Normes de gestió",
     },
     about: {
-      kicker: "01 — Empresa",
       title: "Una oficina tècnica consolidada, amb criteri propi.",
       p1: "CETRES Enginyers, SLP es va constituir el juny de 1988 a Barcelona. Des d’aleshores ens dediquem a l’enginyeria civil: redacció d’estudis i projectes, assistències tècniques i direccions d’obra, en obra civil i urbanització.",
       p2: "Hem intervingut en infraestructures de primer ordre —autopistes, carreteres, ponts, ferrocarril i obres subterrànies— i mantenim relacions estables amb administracions, concessionàries i contractistes.",
@@ -47,7 +45,6 @@ export const messages = {
       photoAlt: "Intradós d’un pont de formigó sobre un llit fluvial",
     },
     services: {
-      kicker: "02 — Serveis",
       title: "El que fem, i com ho fem.",
       intro:
         "Oferim coneixement d’obra i eines pròpies de càlcul i gestió. En cada encàrrec busquem la solució tècnica correcta i assegurem cost, termini i qualitat.",
@@ -85,7 +82,6 @@ export const messages = {
       ],
     },
     projects: {
-      kicker: "03 — Projectes",
       title: "Una selecció d’encàrrecs.",
       intro:
         "Autopistes, carreteres i estructures per a ACESA, Abertis, Invicat, Infraestructures.cat i altres administracions. Aquests són alguns treballs representatius.",
@@ -167,7 +163,6 @@ export const messages = {
       ],
     },
     team: {
-      kicker: "04 — Equip",
       title: "Criteri tècnic, tracte directe.",
       p1: "L’oficina la formen professionals amb experiència reconeguda en cada disciplina. El compromís i el rigor en el tracte —intern i amb el client— són part del mètode, no un afegit.",
       p2: "Els socis i representants són Xavier Bosch i Solé i Carles Giner i Garriga, enginyers de Camins, Canals i Ports, especialitat d’estructures, amb més de trenta anys de pràctica.",
@@ -185,7 +180,6 @@ export const messages = {
       photoAlt: "Muntatge d’un tauler mixt d’acer i formigó",
     },
     contact: {
-      kicker: "05 — Contacte",
       title: "Escriviu-nos o visiteu l’oficina.",
       lead: "Carrer Berruguete, 98 · 08035 Barcelona",
       phoneLabel: "Telèfon",
@@ -218,7 +212,6 @@ export const messages = {
       stats: "Datos",
     },
     hero: {
-      eyebrow: "Consultoría de ingeniería civil · Barcelona · 1988",
       title: "Estudios, proyectos y dirección de obra.",
       lead: "Desde 1988 trabajamos con las principales administraciones y concesionarias de Cataluña y España, y con empresa privada. Especialistas en carreteras, autopistas y cálculo de estructuras.",
       ctaProjects: "Ver proyectos",
@@ -233,7 +226,6 @@ export const messages = {
       iso: "Normas de gestión",
     },
     about: {
-      kicker: "01 — Empresa",
       title: "Una oficina técnica consolidada, con criterio propio.",
       p1: "CETRES Enginyers, SLP se constituyó en junio de 1988 en Barcelona. Desde entonces nos dedicamos a la ingeniería civil: redacción de estudios y proyectos, asistencias técnicas y direcciones de obra, en obra civil y urbanización.",
       p2: "Hemos intervenido en infraestructuras de primer orden —autopistas, carreteras, puentes, ferrocarril y obras subterráneas— y mantenemos relaciones estables con administraciones, concesionarias y contratistas.",
@@ -241,7 +233,6 @@ export const messages = {
       photoAlt: "Intradós de un puente de hormigón sobre un cauce",
     },
     services: {
-      kicker: "02 — Servicios",
       title: "Lo que hacemos, y cómo lo hacemos.",
       intro:
         "Ofrecemos conocimiento de obra y herramientas propias de cálculo y gestión. En cada encargo buscamos la solución técnica correcta y aseguramos coste, plazo y calidad.",
@@ -279,7 +270,6 @@ export const messages = {
       ],
     },
     projects: {
-      kicker: "03 — Proyectos",
       title: "Una selección de encargos.",
       intro:
         "Autopistas, carreteras y estructuras para ACESA, Abertis, Invicat, Infraestructures.cat y otras administraciones. Estos son algunos trabajos representativos.",
@@ -361,7 +351,6 @@ export const messages = {
       ],
     },
     team: {
-      kicker: "04 — Equipo",
       title: "Criterio técnico, trato directo.",
       p1: "La oficina la forman profesionales con experiencia reconocida en cada disciplina. El compromiso y el rigor en el trato —interno y con el cliente— son parte del método, no un añadido.",
       p2: "Los socios y representantes son Xavier Bosch i Solé y Carles Giner i Garriga, ingenieros de Caminos, Canales y Puertos, especialidad de estructuras, con más de treinta años de práctica.",
@@ -379,7 +368,6 @@ export const messages = {
       photoAlt: "Montaje de un tablero mixto de acero y hormigón",
     },
     contact: {
-      kicker: "05 — Contacto",
       title: "Escríbanos o visiten la oficina.",
       lead: "Carrer Berruguete, 98 · 08035 Barcelona",
       phoneLabel: "Teléfono",
@@ -412,7 +400,6 @@ export const messages = {
       stats: "Figures",
     },
     hero: {
-      eyebrow: "Civil engineering consultancy · Barcelona · 1988",
       title: "Studies, designs and site supervision.",
       lead: "Since 1988 we have worked with the main public authorities and concessionaires in Catalonia and Spain, and with private clients. We specialise in roads, motorways and structural design.",
       ctaProjects: "View projects",
@@ -427,7 +414,6 @@ export const messages = {
       iso: "Management standards",
     },
     about: {
-      kicker: "01 — Company",
       title: "A settled technical office, with its own judgement.",
       p1: "CETRES Enginyers, SLP was founded in June 1988 in Barcelona. Since then we have worked in civil engineering: studies and designs, technical assistance and site supervision, on civil works and urban development.",
       p2: "We have taken part in major infrastructure — motorways, roads, bridges, rail and underground works — and we keep lasting working relationships with public authorities, concessionaires and contractors.",
@@ -435,7 +421,6 @@ export const messages = {
       photoAlt: "Soffit of a concrete bridge over a watercourse",
     },
     services: {
-      kicker: "02 — Services",
       title: "What we do, and how we do it.",
       intro:
         "We bring site knowledge and our own calculation and management tools. On every commission we look for the right technical solution and hold cost, programme and quality.",
@@ -473,7 +458,6 @@ export const messages = {
       ],
     },
     projects: {
-      kicker: "03 — Projects",
       title: "A selection of commissions.",
       intro:
         "Motorways, roads and structures for ACESA, Abertis, Invicat, Infraestructures.cat and other authorities. These are some representative works.",
@@ -555,7 +539,6 @@ export const messages = {
       ],
     },
     team: {
-      kicker: "04 — Team",
       title: "Technical judgement, direct dealing.",
       p1: "The office is made up of professionals with recognised experience in each field. Commitment and care in how we work — inside the office and with the client — are part of the method, not an extra.",
       p2: "The partners are Xavier Bosch i Solé and Carles Giner i Garriga, civil engineers (Ingenieros de Caminos, Canales y Puertos), structures specialism, with more than thirty years of practice.",
@@ -573,7 +556,6 @@ export const messages = {
       photoAlt: "Erection of a steel-and-concrete composite deck",
     },
     contact: {
-      kicker: "05 — Contact",
       title: "Write to us or visit the office.",
       lead: "Carrer Berruguete, 98 · 08035 Barcelona",
       phoneLabel: "Telephone",
