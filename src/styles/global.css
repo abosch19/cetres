@@ -46,14 +46,6 @@
   line-gap-override: 0%;
 }
 
-@font-face {
-  font-family: "IBM Plex Mono";
-  font-style: normal;
-  font-weight: 400;
-  font-display: optional;
-  src: url("/fonts/ibm-plex-mono-400.woff2") format("woff2");
-}
-
 :root {
   --ink: #161412;
   --ink-soft: #4a453e;
@@ -70,7 +62,6 @@
   --shadow: 0 24px 60px -28px rgba(22, 20, 18, 0.28);
   --heading: "Space Grotesk", "Space Grotesk Fallback", "Instrument Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --sans: "Instrument Sans", "Instrument Sans Fallback", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --mono: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
   --pad: clamp(1.25rem, 4vw, 3.5rem);
   --wide: 1180px;
   --header: 4.25rem;
@@ -102,21 +93,6 @@ body {
   background-color: var(--paper);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-}
-
-body::before {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  /* Stay outside Safari 26's ~4px edge sample zone so this overlay
-     cannot tint the status bar as transparent. */
-  top: 12px;
-  right: 0;
-  bottom: 12px;
-  left: 0;
-  z-index: 80;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Real elements (not ::before) so Safari 26 Liquid Glass samples --paper. */
@@ -286,9 +262,8 @@ blockquote {
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
 }
 
 .lang a {
@@ -401,8 +376,14 @@ blockquote {
 /* Hero */
 
 .hero {
-  padding: clamp(3rem, 8vw, 6.5rem) 0 0;
+  padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(2.5rem, 5vw, 4rem);
   position: relative;
+  background-image:
+    linear-gradient(180deg, var(--paper) 0%, rgba(242, 238, 230, 0.88) 46%, rgba(242, 238, 230, 0.6) 100%),
+    url("/images/photos/bridge-hero.jpg");
+  background-size: 100% 100%, cover;
+  background-position: center, center 62%;
+  background-repeat: no-repeat;
 }
 
 .hero::before {
@@ -466,54 +447,30 @@ blockquote {
   transform: translateX(4px);
 }
 
-.btn-solid {
-  background: var(--ink);
-  color: var(--paper);
-}
-
 .btn-solid:hover,
 .btn-solid:focus-visible {
-  box-shadow: 0 14px 30px -14px rgba(141, 69, 62, 0.55);
+  background: var(--paper);
+  color: var(--ink);
 }
 
 .btn-ghost {
   background: transparent;
 }
 
-.btn:hover,
-.btn:focus-visible {
-  background: var(--terracotta);
-  border-color: var(--terracotta);
-  color: var(--white);
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  border-color: var(--ink);
 }
 
 :focus-visible {
   outline: 2px solid var(--terracotta);
   outline-offset: 3px;
-}
-
-.hero-film {
-  margin-top: clamp(2.5rem, 6vw, 4.5rem);
-  position: relative;
-}
-
-.hero-film img {
-  width: 100%;
-  height: clamp(11rem, 28vw, 22rem);
-  object-fit: cover;
-  object-position: center 45%;
-}
-
-.hero-film figcaption {
-  position: static;
-  display: block;
-  text-align: right;
-  padding: 0.55rem var(--pad) 0;
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
 }
 
 /* Stats */
@@ -553,11 +510,6 @@ blockquote {
   font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1;
-}
-
-.stat b::after {
-  content: ".";
-  color: var(--terracotta);
 }
 
 .stat span {
@@ -619,32 +571,6 @@ blockquote {
   object-fit: cover;
 }
 
-.frame-marks {
-  --tick: var(--terracotta);
-  position: relative;
-}
-
-.frame-marks::after {
-  content: "";
-  position: absolute;
-  inset: -13px;
-  pointer-events: none;
-  background-image:
-    linear-gradient(var(--tick), var(--tick)),
-    linear-gradient(var(--tick), var(--tick)),
-    linear-gradient(var(--tick), var(--tick)),
-    linear-gradient(var(--tick), var(--tick)),
-    linear-gradient(var(--tick), var(--tick)),
-    linear-gradient(var(--tick), var(--tick)),
-    linear-gradient(var(--tick), var(--tick)),
-    linear-gradient(var(--tick), var(--tick));
-  background-position: left top, left top, right top, right top,
-    left bottom, left bottom, right bottom, right bottom;
-  background-size: 14px 1px, 1px 14px, 14px 1px, 1px 14px,
-    14px 1px, 1px 14px, 14px 1px, 1px 14px;
-  background-repeat: no-repeat;
-}
-
 /* Services */
 
 .service-list {
@@ -666,9 +592,8 @@ blockquote {
 }
 
 .service .n {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  font-weight: 500;
   color: var(--terracotta-deep);
   transition: color 0.3s var(--ease);
 }
@@ -700,9 +625,7 @@ blockquote {
 }
 
 .fields h3 {
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--ink-soft);
   margin-bottom: 0.9rem;
@@ -767,10 +690,7 @@ blockquote {
   display: inline-block;
   border: 1px solid var(--line-strong);
   padding: 0.22rem 0.55rem;
-  font-family: var(--mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 0.78rem;
   color: var(--terracotta-deep);
 }
 
@@ -849,10 +769,8 @@ blockquote {
 }
 
 .partner .label {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 500;
   color: var(--ink-faint);
 }
 
@@ -871,17 +789,12 @@ blockquote {
 /* Contact */
 
 .contact-panel {
-  --tick: rgba(250, 248, 243, 0.38);
   position: relative;
   background: var(--ink);
   color: var(--paper);
   padding: clamp(1.9rem, 5vw, 3.6rem);
   display: grid;
   gap: 1.6rem;
-}
-
-.contact-panel::after {
-  inset: 10px;
 }
 
 .contact-panel address {
@@ -907,10 +820,8 @@ blockquote {
 }
 
 .contact-panel dt {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 500;
   color: var(--terracotta-soft);
   margin-bottom: 0.25rem;
 }
@@ -1054,33 +965,6 @@ html.js [data-reveal] {
 html.js [data-reveal].is-in {
   opacity: 1;
   transform: none;
-}
-
-html.js [data-reveal-stagger] > * {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-}
-
-html.js [data-reveal-stagger].is-in > * {
-  opacity: 1;
-  transform: none;
-}
-
-html.js [data-reveal-stagger] > *:nth-child(2) {
-  transition-delay: 0.08s;
-}
-
-html.js [data-reveal-stagger] > *:nth-child(3) {
-  transition-delay: 0.16s;
-}
-
-html.js [data-reveal-stagger] > *:nth-child(4) {
-  transition-delay: 0.24s;
-}
-
-html.js [data-reveal-stagger] > *:nth-child(n + 5) {
-  transition-delay: 0.3s;
 }
 
 /* Desktop */
@@ -1231,8 +1115,7 @@ html.js [data-reveal-stagger] > *:nth-child(n + 5) {
     animation: none !important;
   }
 
-  html.js [data-reveal],
-  html.js [data-reveal-stagger] > * {
+  html.js [data-reveal] {
     opacity: 1;
     transform: none;
   }

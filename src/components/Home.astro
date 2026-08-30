@@ -44,32 +44,10 @@ const clientRows = [
         </div>
       </div>
     </div>
-    <figure class="hero-film">
-      <picture>
-        <source
-          type="image/avif"
-          srcset="/images/photos/8-480.avif 480w, /images/photos/8-800.avif 800w, /images/photos/8.avif 1000w"
-          sizes="100vw"
-        />
-        <source
-          type="image/webp"
-          srcset="/images/photos/8-480.webp 480w, /images/photos/8-800.webp 800w, /images/photos/8.webp 1000w"
-          sizes="100vw"
-        />
-        <img
-          src="/images/photos/8.jpg"
-          alt={t.hero.photoAlt}
-          width="1000"
-          height="300"
-          fetchpriority="high"
-        />
-      </picture>
-      <figcaption>{t.hero.caption}</figcaption>
-    </figure>
   </section>
 
   <section class="stats" aria-label={t.ui.stats}>
-    <div class="wrap stats-grid" data-reveal-stagger>
+    <div class="wrap stats-grid">
       <div class="stat">
         <b>1988</b>
         <span>{t.stats.year}</span>
@@ -91,16 +69,16 @@ const clientRows = [
 
   <section class="section" id="empresa">
     <div class="wrap">
-      <div class="section-head" data-reveal>
+      <div class="section-head">
         <h2 class="display">{t.about.title}</h2>
       </div>
-      <div class="split-stack" data-reveal>
+      <div class="split-stack">
         <div class="prose">
           <p>{t.about.p1}</p>
           <p>{t.about.p2}</p>
           <p>{t.about.p3}</p>
         </div>
-        <figure class="film frame-marks">
+        <figure class="film" data-reveal>
           <picture>
             <source
               type="image/webp"
@@ -151,11 +129,11 @@ const clientRows = [
 
   <section class="section" id="serveis">
     <div class="wrap">
-      <div class="section-head" data-reveal>
+      <div class="section-head">
         <h2 class="display">{t.services.title}</h2>
         <p class="lede">{t.services.intro}</p>
       </div>
-      <div class="service-list" data-reveal-stagger>
+      <div class="service-list">
         {
           t.services.items.map((item) => (
             <article class="service">
@@ -177,11 +155,11 @@ const clientRows = [
 
   <section class="section" id="projectes">
     <div class="wrap">
-      <div class="section-head" data-reveal>
+      <div class="section-head">
         <h2 class="display">{t.projects.title}</h2>
         <p class="lede">{t.projects.intro}</p>
       </div>
-      <div class="project-grid" data-reveal-stagger>
+      <div class="project-grid">
         {
           t.projects.items.map((item) => (
             <article class="project">
@@ -220,15 +198,15 @@ const clientRows = [
 
   <section class="section" id="equip">
     <div class="wrap">
-      <div class="section-head" data-reveal>
+      <div class="section-head">
         <h2 class="display">{t.team.title}</h2>
       </div>
-      <div class="split-stack" data-reveal>
+      <div class="split-stack">
         <div class="prose">
           <p>{t.team.p1}</p>
           <p>{t.team.p2}</p>
         </div>
-        <figure class="film frame-marks">
+        <figure class="film" data-reveal>
           <picture>
             <source
               type="image/webp"
@@ -262,10 +240,10 @@ const clientRows = [
 
   <section class="section" id="contacte">
     <div class="wrap">
-      <div class="section-head" data-reveal>
+      <div class="section-head">
         <h2 class="display">{t.contact.title}</h2>
       </div>
-      <div class="contact-panel frame-marks" data-reveal>
+      <div class="contact-panel">
         <address>
           <p class="contact-lead">{t.contact.lead}</p>
           <dl>
@@ -319,7 +297,7 @@ const clientRows = [
 </footer>
 
 <script>
-  const targets = document.querySelectorAll<HTMLElement>("[data-reveal], [data-reveal-stagger]");
+  const targets = document.querySelectorAll<HTMLElement>("[data-reveal]");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
       (entries) => {
