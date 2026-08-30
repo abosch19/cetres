@@ -243,41 +243,50 @@ const clientRows = [
       <div class="section-head">
         <h2 class="display">{t.contact.title}</h2>
       </div>
-      <div class="contact-panel">
-        <address>
-          <p class="contact-lead">{t.contact.lead}</p>
-          <dl>
-            <div>
-              <dt>{t.contact.phoneLabel}</dt>
-              <dd>
-                <a href={`tel:${business.telephone}`}>{business.telephoneDisplay}</a>
-              </dd>
-            </div>
-            <div>
-              <dt>{t.contact.emailLabel}</dt>
-              <dd><a href={`mailto:${business.email}`}>{business.email}</a></dd>
-            </div>
-          </dl>
-        </address>
-        <p>
-          <a
-            class="btn map-btn"
-            href="https://maps.app.goo.gl/AMjT74PeDSKU6vZu9"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t.contact.map}
-            <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
-              <path
-                d="M4 12 12 4M6 3.5h5.5V9"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              ></path>
-            </svg>
-          </a>
-        </p>
+      <div class="contact-list" data-reveal>
+        <a class="contact-row" href={`tel:${business.telephone}`}>
+          <span class="label">{t.contact.phoneLabel}</span>
+          <span class="value">{business.telephoneDisplay}</span>
+          <svg class="arrow" viewBox="0 0 16 16" width="22" height="22" aria-hidden="true">
+            <path
+              d="M1 8h13M9.5 3.5 14 8l-4.5 4.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            ></path>
+          </svg>
+        </a>
+        <a class="contact-row" href={`mailto:${business.email}`}>
+          <span class="label">{t.contact.emailLabel}</span>
+          <span class="value">{business.email}</span>
+          <svg class="arrow" viewBox="0 0 16 16" width="22" height="22" aria-hidden="true">
+            <path
+              d="M1 8h13M9.5 3.5 14 8l-4.5 4.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            ></path>
+          </svg>
+        </a>
+        <a
+          class="contact-row"
+          href="https://maps.app.goo.gl/AMjT74PeDSKU6vZu9"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span class="label">{t.contact.map}</span>
+          <span class="value">{t.contact.lead}</span>
+          <svg class="arrow" viewBox="0 0 16 16" width="22" height="22" aria-hidden="true">
+            <path
+              d="M4 12 12 4M6 3.5h5.5V9"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            ></path>
+          </svg>
+        </a>
       </div>
+      <p class="contact-meta" aria-hidden="true">41.4330° N — 2.1496° E · Barcelona</p>
     </div>
   </section>
 </main>
